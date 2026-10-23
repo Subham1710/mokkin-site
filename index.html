@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mokkin</title>
+<meta name="description" content="Mokkin is a product-led software studio. We understand your business before we write code. Websites, mobile apps and custom software for founders and organisations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: The Frame. Ink bands carry the thesis on a blueprint grid; Paper bands carry the detail.
+   One Signal frame per band points at the most important thing. */
+:root {
+  --ink: #0E1726;
+  --slate: #1C2738;
+  --graphite: #5B6573;
+  --rule: #D5DAE1;
+  --paper: #F4F6F8;
+  --white: #FFFFFF;
+  --signal: #FF5A1F;
+  --ember: #C2410C;
+  --mist: #9AA4B2;           /* graphite lifted for secondary text on Ink */
+  --grid: rgba(213,218,225,.06);
+  --sans: "Instrument Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --max: 1160px;
+  --arm: 18px;
+  --stroke: 3px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--ink); }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; border-radius: 2px; }
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 720px) { .wrap { padding-left: max(32px, env(safe-area-inset-left, 0px)); padding-right: max(32px, env(safe-area-inset-right, 0px)); } }
+
+.label {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+h1, h2, h3 { font-weight: 600; letter-spacing: -0.03em; text-wrap: balance; margin: 0; }
+h2 { font-size: clamp(32px, 4.6vw, 52px); line-height: 1.08; }
+h3 { font-size: 22px; line-height: 1.25; letter-spacing: -0.015em; }
+p { margin: 0; }
+
+/* The corner frame, drawn with eight gradients so any element can wear it */
+.framed {
+  --c: var(--signal);
+  background:
+    linear-gradient(var(--c), var(--c)) top left / var(--arm) var(--stroke),
+    linear-gradient(var(--c), var(--c)) top left / var(--stroke) var(--arm),
+    linear-gradient(var(--c), var(--c)) top right / var(--arm) var(--stroke),
+    linear-gradient(var(--c), var(--c)) top right / var(--stroke) var(--arm),
+    linear-gradient(var(--c), var(--c)) bottom left / var(--arm) var(--stroke),
+    linear-gradient(var(--c), var(--c)) bottom left / var(--stroke) var(--arm),
+    linear-gradient(var(--c), var(--c)) bottom right / var(--arm) var(--stroke),
+    linear-gradient(var(--c), var(--c)) bottom right / var(--stroke) var(--arm);
+  background-repeat: no-repeat;
+}
+
+/* ---------- Header ---------- */
+.top {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 5;
+  background: rgba(14,23,38,.94);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--slate);
+  color: var(--paper);
+}
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.logo {
+  --arm: 9px; --stroke: 2px;
+  display: inline-block;
+  padding: 5px 11px 7px;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  text-decoration: none;
+  color: var(--paper);
+}
+.nav { display: flex; align-items: center; gap: 28px; }
+.nav a { text-decoration: none; font-size: 15px; color: var(--mist); transition: color .15s; }
+.nav a:hover { color: var(--paper); }
+.nav .btn { color: var(--ink); }
+@media (max-width: 760px) { .nav .hide-sm { display: none; } }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--sans);
+  font-size: 15px; font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .15s, background-color .15s, border-color .15s;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-signal { background: var(--signal); color: var(--ink); }
+.btn-signal:hover { background: #FF7240; }
+.btn-ghost { background: transparent; color: var(--paper); border-color: #3A475B; }
+.btn-ghost:hover { border-color: var(--paper); }
+
+/* ---------- Ink bands ---------- */
+.ink {
+  background-color: var(--ink);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+  color: var(--paper);
+}
+
+/* ---------- Hero ---------- */
+.hero .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  gap: 56px;
+  align-items: center;
+  padding-block: 88px 104px;
+}
+@media (max-width: 900px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); padding-block: 56px 72px; gap: 48px; } }
+.hero .label { color: var(--mist); }
+.hero h1 {
+  font-size: clamp(48px, 8vw, 104px);
+  line-height: .98;
+  letter-spacing: -0.045em;
+  margin-top: 24px;
+}
+.hero h1 .framed {
+  --arm: clamp(14px, 1.6vw, 22px); --stroke: clamp(3px, .35vw, 4px);
+  display: inline-block;
+  padding: .02em .14em .1em;
+  margin-left: -.14em;
+  animation: frame-in .9s cubic-bezier(.2,.7,.2,1) .2s both;
+}
+@keyframes frame-in { from { --arm: 0px; } }
+@property --arm { syntax: "<length>"; inherits: true; initial-value: 18px; }
+.hero h1 .then { color: var(--mist); }
+.hero .lede { margin-top: 28px; max-width: 34em; font-size: 19px; color: #C7CED8; }
+.hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+
+/* The mock-up: what you mean, annotated */
+.mock { position: relative; }
+.mock-card {
+  background: var(--slate);
+  border: 1px solid #2A374B;
+  border-radius: 6px;
+  padding: 18px;
+  box-shadow: 0 30px 60px -30px rgba(0,0,0,.6);
+}
+.mock-bar { display: flex; gap: 6px; margin-bottom: 16px; }
+.mock-bar i { width: 8px; height: 8px; border-radius: 50%; background: #34425A; }
+.mock-row { height: 10px; border-radius: 2px; background: #2C3A50; }
+.mock-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+.mock-tile { height: 74px; border-radius: 3px; background: #243146; }
+.mock-focus {
+  --arm: 14px; --stroke: 3px;
+  margin: 18px -6px 0;
+  padding: 14px 16px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+.mock-focus span { font-size: 15px; font-weight: 600; color: var(--paper); }
+.mock-focus b { font: 500 12px/1 var(--mono); color: var(--ink); background: var(--signal); padding: 8px 10px; border-radius: 2px; letter-spacing: .04em; }
+.redline {
+  margin-top: 18px;
+  display: grid; gap: 6px;
+  font-family: var(--mono); font-size: 13px; color: var(--mist);
+}
+.redline .to { color: var(--signal); }
+
+/* ---------- Paper sections ---------- */
+section { scroll-margin-top: 72px; }
+.band { padding-block: 104px; }
+@media (max-width: 720px) { .band { padding-block: 72px; } }
+.paper .label { color: var(--ember); }
+.head { display: grid; gap: 18px; max-width: 760px; }
+.head p { font-size: 19px; color: var(--graphite); max-width: 36em; }
+
+/* Tension */
+.tension .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: end; }
+@media (max-width: 860px) { .tension .wrap { grid-template-columns: minmax(0, 1fr); gap: 40px; } }
+.tension h2 em { font-style: normal; color: var(--ember); }
+.missing { display: grid; gap: 0; border-top: 1px solid var(--rule); }
+.missing li { display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--rule); font-size: 18px; font-weight: 500; }
+.missing li span { font-family: var(--mono); font-size: 12px; color: var(--graphite); letter-spacing: .08em; padding-top: 5px; text-transform: uppercase; }
+ul.missing, ul.plain { list-style: none; margin: 0; padding: 0; }
+.missing-note { margin-top: 18px; font-size: 15px; color: var(--graphite); }
+
+/* Order: four steps, corners light up as the work completes */
+.order { background: var(--white); border-block: 1px solid var(--rule); }
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-top: 56px; }
+@media (max-width: 980px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .steps { grid-template-columns: minmax(0, 1fr); } }
+.step {
+  --arm: 22px; --stroke: 3px;
+  --tl: var(--rule); --tr: var(--rule); --br: var(--rule); --bl: var(--rule);
+  padding: 30px 26px 32px;
+  display: grid; align-content: start; gap: 14px;
+  background:
+    linear-gradient(var(--tl), var(--tl)) top left / var(--arm) var(--stroke),
+    linear-gradient(var(--tl), var(--tl)) top left / var(--stroke) var(--arm),
+    linear-gradient(var(--tr), var(--tr)) top right / var(--arm) var(--stroke),
+    linear-gradient(var(--tr), var(--tr)) top right / var(--stroke) var(--arm),
+    linear-gradient(var(--br), var(--br)) bottom right / var(--arm) var(--stroke),
+    linear-gradient(var(--br), var(--br)) bottom right / var(--stroke) var(--arm),
+    linear-gradient(var(--bl), var(--bl)) bottom left / var(--arm) var(--stroke),
+    linear-gradient(var(--bl), var(--bl)) bottom left / var(--stroke) var(--arm),
+    var(--paper);
+  background-repeat: no-repeat;
+}
+.step:nth-child(n+1) { --tl: var(--signal); }
+.step:nth-child(n+2) { --tr: var(--signal); }
+.step:nth-child(n+3) { --br: var(--signal); }
+.step:nth-child(n+4) { --bl: var(--signal); }
+.step .label { color: var(--graphite); }
+.step h3 { font-size: 28px; }
+.step p { color: var(--graphite); font-size: 16px; }
+.step .out { margin-top: 6px; font-family: var(--mono); font-size: 12.5px; color: var(--ink); letter-spacing: .02em; }
+.step .out::before { content: "You get: "; color: var(--graphite); }
+
+/* Services */
+.groups { display: grid; gap: 0; margin-top: 56px; border-top: 1px solid var(--ink); }
+.group { display: grid; grid-template-columns: minmax(0, 280px) minmax(0, 1fr); gap: 32px; padding-block: 36px; border-bottom: 1px solid var(--rule); }
+@media (max-width: 760px) { .group { grid-template-columns: minmax(0, 1fr); gap: 20px; padding-block: 28px; } }
+.group-name { display: grid; gap: 8px; align-content: start; }
+.group-name h3 { font-size: 30px; }
+.group-name p { color: var(--graphite); font-size: 15px; }
+.svc { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 40px; }
+@media (max-width: 620px) { .svc { grid-template-columns: minmax(0, 1fr); gap: 22px; } }
+.svc div { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 4px 0; }
+.svc .n { font-family: var(--mono); font-size: 12px; color: var(--graphite); padding-top: 6px; grid-row: span 2; }
+.svc h4 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -0.01em; }
+.svc p { color: var(--graphite); font-size: 15.5px; }
+
+/* Promises */
+.promises .wrap { display: grid; gap: 56px; }
+.promise-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+@media (max-width: 860px) { .promise-grid { grid-template-columns: minmax(0, 1fr); } }
+.promise { background: var(--paper); padding: 32px 28px; display: grid; gap: 10px; align-content: start; }
+.promise q { quotes: none; font-size: 22px; font-weight: 600; letter-spacing: -0.015em; line-height: 1.3; }
+.promise p { color: var(--graphite); font-size: 15.5px; }
+
+/* Contact */
+.contact .wrap { padding-block: 104px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 56px; align-items: center; }
+@media (max-width: 860px) { .contact .wrap { grid-template-columns: minmax(0, 1fr); padding-block: 72px; gap: 40px; } }
+.contact .label { color: var(--mist); }
+.contact h2 { margin-top: 20px; font-size: clamp(36px, 5.4vw, 64px); }
+.contact h2 .framed { --arm: 16px; --stroke: 3px; display: inline-block; padding: 0 .12em .06em; }
+.contact .lede { margin-top: 22px; color: #C7CED8; font-size: 18px; max-width: 32em; }
+.reach { display: grid; gap: 14px; }
+.reach-row {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 16px;
+  background: var(--slate); border: 1px solid #2A374B; border-radius: 4px; padding: 18px 20px;
+}
+.reach-row .label { font-size: 11px; display: block; margin-bottom: 6px; }
+.reach-row .val { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; overflow-wrap: anywhere; user-select: all; }
+.reach-row a.val { text-decoration: none; user-select: auto; }
+.reach-row a.val:hover { color: var(--signal); }
+.copy { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; background: transparent; color: var(--paper); border: 1px solid #3A475B; border-radius: 3px; padding: 9px 12px; cursor: pointer; }
+.copy:hover { border-color: var(--paper); }
+.reach-note { font-size: 14px; color: var(--mist); }
+
+footer { background: var(--ink); color: var(--mist); border-top: 1px solid var(--slate); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; padding-block: 28px; font-size: 14px; }
+footer .tag { color: var(--paper); font-weight: 600; letter-spacing: -0.01em; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo framed" href="#top" aria-label="Mokkin, back to top">mokkin</a>
+    <nav class="nav" aria-label="Main">
+      <a class="hide-sm" href="#how">How we work</a>
+      <a class="hide-sm" href="#services">Services</a>
+      <a class="hide-sm" href="#promises">Working with us</a>
+      <a class="btn btn-signal" href="#contact">Start a conversation</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="ink hero">
+    <div class="wrap">
+      <div>
+        <p class="label">Product-led software studio</p>
+        <h1><span class="framed">Understood,</span><br><span class="then">then built.</span></h1>
+        <p class="lede">Mokkin builds websites, mobile apps and custom software for founders and organisations. We learn how your business works before we write any code, and we show you what it will look like before we build it.</p>
+        <div class="ctas">
+          <a class="btn btn-signal" href="#contact">Tell us what you need</a>
+          <a class="btn btn-ghost" href="#how">See how we work</a>
+        </div>
+      </div>
+
+      <div class="mock" aria-hidden="true">
+        <div class="mock-card">
+          <div class="mock-bar"><i></i><i></i><i></i></div>
+          <div class="mock-row" style="width:46%"></div>
+          <div class="mock-row" style="width:72%;margin-top:10px;background:#243146"></div>
+          <div class="mock-grid">
+            <div class="mock-tile"></div>
+            <div class="mock-tile"></div>
+          </div>
+          <div class="mock-focus framed">
+            <span>Customers book a visit in two taps</span>
+            <b>BOOK</b>
+          </div>
+          <div class="mock-grid">
+            <div class="mock-row"></div>
+            <div class="mock-row" style="width:60%"></div>
+          </div>
+        </div>
+        <div class="redline">
+          <span>what you mean</span>
+          <span class="to">→ what we build</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="paper band tension">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Why Mokkin</p>
+        <h2>Software can now be built faster than ever. Is it being built for what the business <em>actually needs?</em></h2>
+        <p>Founders and organisations can reach more agencies, freelancers and app builders than ever. Most software still goes wrong long before the first line of code, in the gap between what you mean and what a team hears.</p>
+      </div>
+      <div>
+        <ul class="missing">
+          <li>Clarity on what to build <span>first</span></li>
+          <li>A shared language with the builders <span>always</span></li>
+          <li>Confidence in each decision <span>always</span></li>
+          <li>Ownership of the product <span>yours</span></li>
+          <li>A partner who stays after launch <span>after</span></li>
+        </ul>
+        <p class="missing-note">What access to more builders does not give you on its own. This is the part we take care of.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="order band" id="how">
+    <div class="wrap">
+      <div class="head">
+        <p class="label" style="color:var(--ember)">How we work</p>
+        <h2>We don't reject speed or code. We change the order they arrive in.</h2>
+        <p>Every project moves through the same four steps. One product owner stays with you from the first conversation to launch, and after it.</p>
+      </div>
+      <ol class="steps" style="list-style:none;margin-block:56px 0;padding:0">
+        <li class="step">
+          <p class="label">Step 01</p>
+          <h3>Understand</h3>
+          <p>We ask about your business before your features: who it serves, how it runs today, what is getting in the way.</p>
+          <p class="out">a written problem statement</p>
+        </li>
+        <li class="step">
+          <p class="label">Step 02</p>
+          <h3>Picture</h3>
+          <p>We show you mock-ups you can point at and react to, with clear options and prices, before anything is built.</p>
+          <p class="out">mock-ups and priced options</p>
+        </li>
+        <li class="step">
+          <p class="label">Step 03</p>
+          <h3>Code</h3>
+          <p>One senior team designs and engineers what you approved. You can talk to the people building it directly.</p>
+          <p class="out">a working product, deployed</p>
+        </li>
+        <li class="step">
+          <p class="label">Step 04</p>
+          <h3>Care</h3>
+          <p>Launch care is included, and ongoing care is there for everything we build. We stay after the handover.</p>
+          <p class="out">updates, fixes and support</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="paper band" id="services">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Services</p>
+        <h2>End to end, with one senior team.</h2>
+        <p>Eight services, grouped the way a project actually runs. Take the whole path or start where you are.</p>
+      </div>
+      <div class="groups">
+        <div class="group">
+          <div class="group-name">
+            <h3>Shape</h3>
+            <p>Decide what to build, and why.</p>
+          </div>
+          <div class="svc">
+            <div><span class="n">01</span><h4>Digital product consulting</h4><p>Turn an idea or a problem into a clear product plan with priorities you can defend.</p></div>
+            <div><span class="n">02</span><h4>Technology consulting</h4><p>Plain-language advice on platforms, tools and costs, so you can make decisions with confidence.</p></div>
+            <div><span class="n">03</span><h4>UI/UX design</h4><p>Flows and screens designed around the people who will use them, tested as mock-ups first.</p></div>
+          </div>
+        </div>
+        <div class="group">
+          <div class="group-name">
+            <h3>Build</h3>
+            <p>Make it real, and make it work.</p>
+          </div>
+          <div class="svc">
+            <div><span class="n">04</span><h4>Website development</h4><p>Fast, accessible websites and web apps that are easy for your team to update.</p></div>
+            <div><span class="n">05</span><h4>Mobile app development</h4><p>Apps for iOS and Android, built for the way your customers already use their phones.</p></div>
+            <div><span class="n">06</span><h4>Custom software</h4><p>Internal tools, portals and systems shaped to how your organisation works.</p></div>
+            <div><span class="n">07</span><h4>Deployment</h4><p>Hosting, app store releases and a launch plan, handled carefully and explained clearly.</p></div>
+          </div>
+        </div>
+        <div class="group">
+          <div class="group-name">
+            <h3>Care</h3>
+            <p>Keep it running after launch.</p>
+          </div>
+          <div class="svc">
+            <div><span class="n">08</span><h4>Maintenance and support</h4><p>Updates, fixes and improvements for everything we build, from people who already know the code.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="paper band promises" id="promises" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Working with us</p>
+        <h2>What you can expect from us.</h2>
+      </div>
+      <div class="promise-grid">
+        <div class="promise">
+          <q>One product owner, start to finish.</q>
+          <p>You won't be passed between people. One person knows your project and answers for it.</p>
+        </div>
+        <div class="promise">
+          <q>We'll show you a mock-up first.</q>
+          <p>You see what you're getting before anything is built, while changes are still cheap.</p>
+        </div>
+        <div class="promise">
+          <q>Here's what this costs, and why.</q>
+          <p>Clear options with prices and timelines. When a feature adds weeks, we tell you, and offer a simpler way.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ink contact" id="contact">
+    <div class="wrap">
+      <div>
+        <p class="label">Start a conversation</p>
+        <h2>Tell us what you <span class="framed">mean.</span></h2>
+        <p class="lede">Write to us about your business and what's in the way. We'll reply with questions first, then options. No question is too basic.</p>
+      </div>
+      <div class="reach">
+        <div class="reach-row">
+          <div>
+            <span class="label">Email</span>
+            <a class="val" id="email" href="mailto:mokkin.tech@gmail.com">mokkin.tech@gmail.com</a>
+          </div>
+          <button class="copy" id="copy-email" type="button">Copy</button>
+        </div>
+        <div class="reach-row">
+          <div>
+            <span class="label">Instagram</span>
+            <a class="val" href="https://www.instagram.com/mokkin.in/" target="_blank" rel="noopener">@mokkin.in</a>
+          </div>
+          <a class="copy" href="https://www.instagram.com/mokkin.in/" target="_blank" rel="noopener" style="text-decoration:none">Open</a>
+        </div>
+        <p class="reach-note">Founders and organisations in any field are welcome.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="tag">mokkin · Understood, then built.</span>
+    <span>Shape · Build · Care · © 2026 Mokkin</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy-email');
+  var email = 'mokkin.tech@gmail.com';
+  function selectText() {
+    var el = document.getElementById('email');
+    var r = document.createRange(); r.selectNodeContents(el);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+  btn.addEventListener('click', function () {
+    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1800); };
+    try {
+      navigator.clipboard.writeText(email).then(done, function () { selectText(); btn.textContent = 'Selected'; });
+    } catch (e) { selectText(); btn.textContent = 'Selected'; }
+  });
+})();
+</script>
+</body>
+</html>
