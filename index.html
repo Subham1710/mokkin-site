@@ -138,10 +138,8 @@ p { margin: 0; }
 /* ---------- Hero ---------- */
 .hero .wrap {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
-  gap: 56px;
-  align-items: center;
-  padding-block: 88px 104px;
+  grid-template-columns: minmax(0, 1fr);
+  padding-block: 96px 112px;
 }
 @media (max-width: 900px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); padding-block: 56px 72px; gap: 48px; } }
 .hero .label { color: var(--mist); }
@@ -163,35 +161,6 @@ p { margin: 0; }
 .hero h1 .then { color: var(--mist); }
 .hero .lede { margin-top: 28px; max-width: 34em; font-size: 19px; color: #C7CED8; }
 .hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
-
-/* The mock-up: what you mean, annotated */
-.mock { position: relative; }
-.mock-card {
-  background: var(--slate);
-  border: 1px solid #2A374B;
-  border-radius: 6px;
-  padding: 18px;
-  box-shadow: 0 30px 60px -30px rgba(0,0,0,.6);
-}
-.mock-bar { display: flex; gap: 6px; margin-bottom: 16px; }
-.mock-bar i { width: 8px; height: 8px; border-radius: 50%; background: #34425A; }
-.mock-row { height: 10px; border-radius: 2px; background: #2C3A50; }
-.mock-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
-.mock-tile { height: 74px; border-radius: 3px; background: #243146; }
-.mock-focus {
-  --arm: 14px; --stroke: 3px;
-  margin: 18px -6px 0;
-  padding: 14px 16px;
-  display: flex; align-items: center; justify-content: space-between; gap: 12px;
-}
-.mock-focus span { font-size: 15px; font-weight: 600; color: var(--paper); }
-.mock-focus b { font: 500 12px/1 var(--mono); color: var(--ink); background: var(--signal); padding: 8px 10px; border-radius: 2px; letter-spacing: .04em; }
-.redline {
-  margin-top: 18px;
-  display: grid; gap: 6px;
-  font-family: var(--mono); font-size: 13px; color: var(--mist);
-}
-.redline .to { color: var(--signal); }
 
 /* ---------- Paper sections ---------- */
 section { scroll-margin-top: 72px; }
@@ -314,30 +283,6 @@ footer .tag { color: var(--paper); font-weight: 600; letter-spacing: -0.01em; }
         <div class="ctas">
           <a class="btn btn-signal" href="#contact">Tell us what you need</a>
           <a class="btn btn-ghost" href="#how">See how we work</a>
-        </div>
-      </div>
-
-      <div class="mock" aria-hidden="true">
-        <div class="mock-card">
-          <div class="mock-bar"><i></i><i></i><i></i></div>
-          <div class="mock-row" style="width:46%"></div>
-          <div class="mock-row" style="width:72%;margin-top:10px;background:#243146"></div>
-          <div class="mock-grid">
-            <div class="mock-tile"></div>
-            <div class="mock-tile"></div>
-          </div>
-          <div class="mock-focus framed">
-            <span>Customers book a visit in two taps</span>
-            <b>BOOK</b>
-          </div>
-          <div class="mock-grid">
-            <div class="mock-row"></div>
-            <div class="mock-row" style="width:60%"></div>
-          </div>
-        </div>
-        <div class="redline">
-          <span>what you mean</span>
-          <span class="to">→ what we build</span>
         </div>
       </div>
     </div>
