@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mokkin</title>
 <meta name="description" content="Mokkin is a product-led software studio. We understand your business before we write code. Websites, mobile apps and custom software for founders and organisations.">
@@ -429,9 +431,9 @@ footer .tag { color: var(--paper); font-weight: 600; letter-spacing: -0.01em; }
         <div class="reach-row">
           <div>
             <span class="label">Instagram</span>
-            <a class="val" href="https://www.instagram.com/mokkin.in/" target="_blank" rel="noopener">@mokkin.in</a>
+            <a class="val" href="https://www.instagram.com/mokkin.in/" target="_blank" rel="noopener noreferrer">@mokkin.in</a>
           </div>
-          <a class="copy" href="https://www.instagram.com/mokkin.in/" target="_blank" rel="noopener" style="text-decoration:none">Open</a>
+          <a class="copy" href="https://www.instagram.com/mokkin.in/" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Open</a>
         </div>
         <p class="reach-note">Founders and organisations in any field are welcome.</p>
       </div>
@@ -446,22 +448,6 @@ footer .tag { color: var(--paper); font-weight: 600; letter-spacing: -0.01em; }
   </div>
 </footer>
 
-<script>
-(function () {
-  var btn = document.getElementById('copy-email');
-  var email = 'mokkin.tech@gmail.com';
-  function selectText() {
-    var el = document.getElementById('email');
-    var r = document.createRange(); r.selectNodeContents(el);
-    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-  }
-  btn.addEventListener('click', function () {
-    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1800); };
-    try {
-      navigator.clipboard.writeText(email).then(done, function () { selectText(); btn.textContent = 'Selected'; });
-    } catch (e) { selectText(); btn.textContent = 'Selected'; }
-  });
-})();
-</script>
+<script src="/app.js" defer></script>
 </body>
 </html>
