@@ -1,5 +1,5 @@
 // Mixpanel analytics for mokkin.in.
-// Nothing loads and nothing is sent until the visitor clicks "Allow" on the consent bar.
+// Loads on every page view (no consent bar, by the owner's decision, 4 Nov 2026).
 // The Mixpanel library is self-hosted in /vendor so the CSP keeps script-src 'self'.
 (function () {
   // Mixpanel project token (public by design: it only allows sending events, not reading them).
@@ -8,12 +8,8 @@
   // If you change it, change connect-src in the CSP meta tag in index.html to match.
   var MIXPANEL_API_HOST = 'https://api-js.mixpanel.com';
   var LIB_URL = '/vendor/mixpanel-2.84.0.min.js';
-  var CONSENT_KEY = 'mokkin_analytics_consent'; // 'granted' | 'denied'
 
-  if (!MIXPANEL_TOKEN || MIXPANEL_TOKEN.indexOf('YOUR_') === 0) return; // not configured yet: no bar, no tracking
-
-  function getConsent() { try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; } }
-  function setConsent(v) { try { localStorage.setItem(CONSENT_KEY, v); } catch (e) {} }
+  if (!MIXPANEL_TOKEN || MIXPANEL_TOKEN.indexOf('YOUR_') === 0) return; // not configured yet: no tracking
 
   var started = false;
   function start() {
@@ -29,11 +25,7 @@ e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\
       track_pageview: true,       // one page_view per visit (autocapture is off, so no duplicates)
       autocapture: false,
       persistence: 'localStorage', // no cookies
-      property_blacklist: ['$referrer'], // keep referring domain, drop full referrer URLs
-      loaded: function (mp) {
-        // A visitor who said no earlier and later clicked Allow: lift the stored opt-out.
-        if (mp.has_opted_out_tracking()) mp.opt_in_tracking();
-      }
+      property_blacklist: ['$referrer'] // keep referring domain, drop full referrer URLs
     });
     window.mixpanel.register({ site: 'mokkin.in' });
     bindEvents();
@@ -56,28 +48,5 @@ e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\
     }, true);
   }
 
-  // Consent bar
-  function hideBar() { var bar = document.getElementById('consent'); if (bar) bar.hidden = true; }
-  function showBar() { var bar = document.getElementById('consent'); if (bar) bar.hidden = false; }
-
-  function decide(v) {
-    setConsent(v);
-    hideBar();
-    if (v === 'granted') {
-      if (started && window.mixpanel && window.mixpanel.opt_in_tracking) window.mixpanel.opt_in_tracking();
-      else start();
-    }
-    else if (started && window.mixpanel && window.mixpanel.opt_out_tracking) { window.mixpanel.opt_out_tracking(); }
-  }
-
-  var allow = document.getElementById('consent-allow');
-  var deny = document.getElementById('consent-deny');
-  var settings = document.getElementById('analytics-settings');
-  if (allow) allow.addEventListener('click', function () { decide('granted'); });
-  if (deny) deny.addEventListener('click', function () { decide('denied'); });
-  if (settings) { settings.hidden = false; settings.addEventListener('click', showBar); }
-
-  var c = getConsent();
-  if (c === 'granted') start();
-  else if (c !== 'denied') showBar();
+  start();
 })();
