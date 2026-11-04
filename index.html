@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://api-js.mixpanel.com; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mokkin</title>
@@ -259,6 +259,7 @@ ul.missing, ul.plain { list-style: none; margin: 0; padding: 0; }
 footer { background: var(--ink); color: var(--mist); border-top: 1px solid var(--slate); }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; padding-block: 28px; font-size: 14px; }
 footer .tag { color: var(--paper); font-weight: 600; letter-spacing: -0.01em; }
+
 </style>
 </head>
 <body>
@@ -270,7 +271,7 @@ footer .tag { color: var(--paper); font-weight: 600; letter-spacing: -0.01em; }
       <a class="hide-sm" href="#how">How we work</a>
       <a class="hide-sm" href="#services">Services</a>
       <a class="hide-sm" href="#promises">Working with us</a>
-      <a class="btn btn-signal" href="#contact">Start a conversation</a>
+      <a class="btn btn-signal" href="#contact" data-track="cta" data-location="nav">Start a conversation</a>
     </nav>
   </div>
 </header>
@@ -283,8 +284,8 @@ footer .tag { color: var(--paper); font-weight: 600; letter-spacing: -0.01em; }
         <h1><span class="framed">Understood,</span><br><span class="then">then built.</span></h1>
         <p class="lede">Mokkin builds websites, mobile apps and custom software for founders and organisations. We learn how your business works before we write any code, and we show you what it will look like before we build it.</p>
         <div class="ctas">
-          <a class="btn btn-signal" href="#contact">Tell us what you need</a>
-          <a class="btn btn-ghost" href="#how">See how we work</a>
+          <a class="btn btn-signal" href="#contact" data-track="cta" data-location="hero">Tell us what you need</a>
+          <a class="btn btn-ghost" href="#how" data-track="cta" data-location="hero">See how we work</a>
         </div>
       </div>
     </div>
@@ -424,16 +425,16 @@ footer .tag { color: var(--paper); font-weight: 600; letter-spacing: -0.01em; }
         <div class="reach-row">
           <div>
             <span class="label">Email</span>
-            <a class="val" id="email" href="mailto:mokkin.tech@gmail.com">mokkin.tech@gmail.com</a>
+            <a class="val" id="email" href="mailto:mokkin.tech@gmail.com" data-track="contact" data-method="email">mokkin.tech@gmail.com</a>
           </div>
-          <button class="copy" id="copy-email" type="button">Copy</button>
+          <button class="copy" id="copy-email" type="button" data-track="contact" data-method="email_copy">Copy</button>
         </div>
         <div class="reach-row">
           <div>
             <span class="label">Instagram</span>
-            <a class="val" href="https://www.instagram.com/mokkin.in/" target="_blank" rel="noopener noreferrer">@mokkin.in</a>
+            <a class="val" href="https://www.instagram.com/mokkin.in/" target="_blank" rel="noopener noreferrer" data-track="contact" data-method="instagram">@mokkin.in</a>
           </div>
-          <a class="copy" href="https://www.instagram.com/mokkin.in/" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Open</a>
+          <a class="copy" href="https://www.instagram.com/mokkin.in/" target="_blank" rel="noopener noreferrer" style="text-decoration:none" data-track="contact" data-method="instagram">Open</a>
         </div>
         <p class="reach-note">Founders and organisations in any field are welcome.</p>
       </div>
@@ -449,5 +450,6 @@ footer .tag { color: var(--paper); font-weight: 600; letter-spacing: -0.01em; }
 </footer>
 
 <script src="/app.js" defer></script>
+<script src="/analytics.js" defer></script>
 </body>
 </html>
