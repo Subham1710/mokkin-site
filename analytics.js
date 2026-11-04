@@ -3,7 +3,7 @@
 // The Mixpanel library is self-hosted in /vendor so the CSP keeps script-src 'self'.
 (function () {
   // Mixpanel project token (public by design: it only allows sending events, not reading them).
-  var MIXPANEL_TOKEN = 'YOUR_MIXPANEL_PROJECT_TOKEN';
+  var MIXPANEL_TOKEN = '7e34349191fb68a62fe566880ba26c9c';
   // Data residency host. US: https://api-js.mixpanel.com  EU: https://api-eu.mixpanel.com  India: https://api-in.mixpanel.com
   // If you change it, change connect-src in the CSP meta tag in index.html to match.
   var MIXPANEL_API_HOST = 'https://api-js.mixpanel.com';

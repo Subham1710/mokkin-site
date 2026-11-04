@@ -5,7 +5,7 @@
 mokkin.in is a static one-page site on GitHub Pages. Mixpanel is the only analytics tool. Do not add a second one (GA, GTM, Segment) alongside it.
 
 - **SDK:** mixpanel-browser 2.84.0, self-hosted at `vendor/mixpanel-2.84.0.min.js` (MIT, see `vendor/LICENSE`) and loaded by the official snippet inside `analytics.js`. Self-hosting keeps the CSP at `script-src 'self'`.
-- **Config:** token and data-residency host are the two constants at the top of `analytics.js`. The token is public by design. If the host changes, update `connect-src` in the CSP meta tag in `index.html` to the same host.
+- **Config:** token (set 4 Nov 2026, US data host) and data-residency host are the two constants at the top of `analytics.js`. The token is public by design. If the host changes, update `connect-src` in the CSP meta tag in `index.html` to the same host.
 - **Consent:** no consent bar. The owner decided on 4 Nov 2026 that it isn't needed (India-based business). Tracking starts on page load. Revisit if the site starts targeting EU/UK/California visitors or when India's DPDP Rules require notice.
 - **Autocapture:** off. **Session Replay:** off. Page views come from `track_pageview: true`; don't add manual page-view events.
 - **Identity:** the site has no login, so no `identify()` / `reset()`. Visitors are anonymous.
