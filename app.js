@@ -1,7 +1,7 @@
 // Copy-email button for the contact section. Kept external so the CSP can forbid inline scripts.
 (function () {
   var btn = document.getElementById('copy-email');
-  var email = 'mokkin.tech@gmail.com';
+  var email = 'hello@mokkin.in';
   function selectText() {
     var el = document.getElementById('email');
     var r = document.createRange(); r.selectNodeContents(el);
