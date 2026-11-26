@@ -207,36 +207,60 @@ section { scroll-margin-top: 84px; }
 .j-steps li p { margin-top: 8px; color: var(--fog); font-size: 16px; }
 .journey.live { height: calc(var(--n, 7) * 85vh + 100vh); }
 .journey.live .j-intro, .journey.live .j-list { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); padding: 0; }
-.journey.live .j-stage { display: block; position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: radial-gradient(60% 50% at 50% 38%, rgba(255,90,31,.10), transparent 70%); }
-.j-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.journey.live .j-stage { display: block; position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: radial-gradient(120% 90% at 70% 50%, #142036 0%, var(--ink) 60%); }
+.j-stage::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(195,202,211,.10) 1px, transparent 1.2px); background-size: 26px 26px; -webkit-mask-image: radial-gradient(60% 70% at 68% 50%, #000 0%, transparent 75%); mask-image: radial-gradient(60% 70% at 68% 50%, #000 0%, transparent 75%); pointer-events: none; }
+.j-stage::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, var(--ink) 0%, transparent 18%, transparent 80%, var(--ink) 100%); pointer-events: none; }
+.j-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
+.j-label, .j-text, .j-bar { z-index: 2; }
 .j-label { position: absolute; top: 104px; left: 0; right: 0; display: flex; align-items: center; gap: 16px; }
 .j-tagline { font-size: 15px; color: var(--mist); }
-@media (max-width: 720px) { .j-tagline { display: none; } }
-.j-text { position: absolute; left: 0; right: 0; bottom: max(150px, 17vh); text-align: center; padding: 0 16px; transition: opacity .18s, transform .18s var(--ease); }
-.j-text.swap { opacity: 0; transform: translateY(10px); }
-.j-num { font-size: clamp(64px, 10vw, 128px); font-weight: 700; letter-spacing: -0.05em; line-height: .9; color: var(--signal); text-shadow: 0 0 40px rgba(255,90,31,.35); }
-.j-title { margin-top: 6px; font-size: clamp(38px, 6.4vw, 84px); line-height: 1.02; letter-spacing: -0.04em; color: var(--white); }
-.j-line { margin: 18px auto 0; max-width: 34em; font-size: clamp(16px, 1.5vw, 20px); color: var(--fog); }
+.j-text { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-46%); pointer-events: none; }
+.j-copy { max-width: min(560px, 44%); transition: opacity .3s var(--ease), transform .3s var(--ease), filter .3s; }
+.j-text.out .j-copy { opacity: 0; transform: translateY(-14px); filter: blur(6px); }
+.j-kick { display: flex; align-items: center; gap: 12px; font-family: var(--mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--signal); }
+.j-kick::before { content: ""; width: 36px; height: 1px; background: linear-gradient(90deg, transparent, var(--signal)); }
+.j-of { color: var(--mist); }
+.j-num { display: block; margin-top: 14px; font-size: clamp(88px, 11vw, 168px); font-weight: 700; letter-spacing: -0.06em; line-height: .86; }
+.j-num .m > span { background: linear-gradient(180deg, #FFB08F 0%, var(--signal) 45%, var(--ember) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.j-title { margin-top: 18px; font-size: clamp(40px, 4.6vw, 72px); line-height: 1.02; letter-spacing: -0.04em; color: var(--white); }
+.j-line { margin-top: 20px; max-width: 30em; font-size: clamp(16px, 1.35vw, 19px); line-height: 1.6; color: var(--fog); }
+.m { display: inline-block; overflow: hidden; vertical-align: bottom; padding: 0 .02em .1em; margin-bottom: -.1em; }
+.m > span { display: inline-block; }
+.j-text.in .m > span { animation: j-rise .9s var(--ease) both; animation-delay: var(--d, 0ms); }
+.j-text.in .j-title .m > span { animation-delay: calc(var(--d, 0ms) + 120ms); }
+.j-text.in .j-line, .j-text.in .j-kick { animation: j-fade .8s var(--ease) both .32s; }
+.j-text.in .j-kick { animation-delay: 0s; }
+@keyframes j-rise { from { transform: translateY(110%) rotate(4deg); } to { transform: none; } }
+@keyframes j-fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 .j-bar { position: absolute; left: 0; right: 0; bottom: 26px; }
 .j-meta { display: flex; align-items: baseline; gap: 12px; font-size: 15px; color: var(--paper); }
 .j-meta .label { color: var(--signal); }
 .j-cur-n { font-family: var(--mono); color: var(--signal); font-weight: 500; }
-.j-pct-wrap { margin-left: auto; font-weight: 600; font-variant-numeric: tabular-nums; }
-.j-track { position: relative; height: 3px; margin: 22px 9px 0; background: #2A3547; border-radius: 3px; }
-.j-fill { position: absolute; left: 0; top: 0; bottom: 0; width: 0; border-radius: 3px; background: linear-gradient(90deg, var(--fog), var(--signal)); box-shadow: 0 0 12px rgba(255,90,31,.6); }
+.j-pct-wrap { margin-left: auto; font-family: var(--mono); font-weight: 500; font-variant-numeric: tabular-nums; }
+.j-track { position: relative; height: 2px; margin: 22px 9px 0; background: rgba(195,202,211,.14); border-radius: 2px; }
+.j-fill { position: absolute; left: 0; top: 0; bottom: 0; width: 0; border-radius: 2px; background: linear-gradient(90deg, rgba(255,90,31,.2), var(--signal)); box-shadow: 0 0 14px rgba(255,90,31,.7); }
+.j-fill::after { content: ""; position: absolute; right: -3px; top: 50%; width: 6px; height: 6px; margin-top: -3px; border-radius: 50%; background: #fff; box-shadow: 0 0 10px 3px rgba(255,138,92,.9); }
 .j-nodes { position: absolute; inset: 0; }
 .j-node { position: absolute; top: 50%; width: 30px; height: 30px; margin: -15px 0 0 -15px; padding: 0; border: 0; background: transparent; cursor: pointer; display: grid; place-items: center; }
-.j-node::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #3A475B; transition: background-color .3s, transform .3s var(--ease), box-shadow .3s; }
-.j-node.done::before { background: var(--signal); }
-.j-node.cur::before { width: 16px; height: 16px; background: var(--signal); box-shadow: 0 0 0 6px rgba(255,90,31,.2), 0 0 22px rgba(255,90,31,.8); }
-.j-node span { position: absolute; bottom: 26px; font-family: var(--mono); font-size: 12px; color: var(--mist); opacity: 0; transition: opacity .3s; }
-.j-node.cur span, .j-node:hover span, .j-node:focus-visible span { opacity: 1; color: var(--paper); }
+.j-node::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--ink); box-shadow: inset 0 0 0 1.5px #4A576B; transition: background-color .4s, box-shadow .4s, width .4s var(--ease), height .4s var(--ease); }
+.j-node.done::before { background: var(--signal); box-shadow: none; }
+.j-node.cur::before { width: 13px; height: 13px; background: var(--signal); box-shadow: 0 0 0 5px rgba(255,90,31,.18), 0 0 22px rgba(255,90,31,.8); }
+.j-node span { position: absolute; bottom: 26px; font-family: var(--mono); font-size: 12px; color: var(--mist); opacity: 0; transform: translateY(4px); transition: opacity .3s, transform .3s var(--ease); }
+.j-node:hover span, .j-node:focus-visible span { opacity: 1; transform: none; color: var(--paper); }
 .j-hint { margin-top: 14px; text-align: center; font-size: 13px; color: var(--mist); }
+@media (max-width: 959px) {
+  .j-text { top: auto; bottom: 150px; transform: none; }
+  .j-copy { max-width: 560px; }
+  .j-num { margin-top: 8px; font-size: clamp(64px, 16vw, 96px); }
+  .j-title { margin-top: 10px; font-size: clamp(32px, 8.4vw, 48px); }
+  .j-line { margin-top: 12px; font-size: 16px; line-height: 1.5; }
+  .j-stage::before { -webkit-mask-image: radial-gradient(70% 40% at 50% 34%, #000 0%, transparent 75%); mask-image: radial-gradient(70% 40% at 50% 34%, #000 0%, transparent 75%); }
+}
 @media (max-width: 720px) {
   .j-label { top: 92px; }
-  .j-text { bottom: 132px; }
+  .j-text { bottom: 118px; }
   .j-meta { font-size: 14px; flex-wrap: wrap; row-gap: 2px; }
-  .j-meta .label { width: 100%; }
+  .j-meta .label { display: none; }
   .j-hint { display: none; }
 }
 
@@ -544,7 +568,7 @@ footer { padding-block: 96px 40px; }
     <div class="j-stage">
       <canvas class="j-canvas" aria-hidden="true"></canvas>
       <div class="wrap j-label"><p class="label tag">How we work</p><p class="j-tagline">See it before you build it.</p></div>
-      <div class="j-text" aria-hidden="true"><div class="j-num">01</div><h3 class="j-title">We ask first.</h3><p class="j-line">Questions about your business come before talk of features. No question is too basic.</p></div>
+      <div class="wrap j-text" aria-hidden="true"><div class="j-copy"><p class="j-kick"><span class="j-ph">Shape</span><span class="j-of">Step <span class="j-k">01</span> of 07</span></p><span class="j-num">01</span><h3 class="j-title">We ask first.</h3><p class="j-line">Questions about your business come before talk of features. No question is too basic.</p></div></div>
       <div class="wrap j-bar">
         <div class="j-meta" aria-hidden="true"><span class="label j-phase">Shape</span><b class="j-cur-n">01</b><span class="j-cur-name">We ask first.</span><span class="j-pct-wrap"><span class="j-pct">0</span>%</span></div>
         <div class="j-track"><div class="j-fill"></div><div class="j-nodes"></div></div>
