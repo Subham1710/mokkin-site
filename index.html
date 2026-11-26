@@ -5,13 +5,28 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://api-js.mixpanel.com; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Mokkin</title>
-<meta name="description" content="Mokkin is a product-led software studio. We understand your business before we write code. Websites, mobile apps and custom software for founders and organisations.">
+<title>Mokkin: understood, then built</title>
+<meta name="description" content="Mokkin is a product-led software studio in Bengaluru. We understand your business before we write code, show you what it will look like before we build it, and stay after launch. Websites, mobile apps and custom software.">
+<link rel="canonical" href="https://mokkin.in/">
+<meta name="theme-color" content="#F4F6F8">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mokkin">
+<meta property="og:url" content="https://mokkin.in/">
+<meta property="og:title" content="Mokkin: understood, then built">
+<meta property="og:description" content="Websites, mobile apps and custom software. We listen first, show it to you before we code it, and stay after launch.">
+<meta property="og:image" content="https://mokkin.in/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Mokkin website: Understood, then built, next to a finished dashboard in an orange frame.">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: The Frame. Ink bands carry the thesis on a blueprint grid; Paper bands carry the detail.
+/* Layout: The Frame, told as a scroll story. Paper carries the story; Ink carries the people and the ending.
    One Signal frame per band points at the most important thing. */
 :root {
   --ink: #0E1726;
@@ -22,50 +37,42 @@
   --white: #FFFFFF;
   --signal: #FF5A1F;
   --ember: #C2410C;
-  --mist: #9AA4B2;           /* graphite lifted for secondary text on Ink */
+  --blush: #FCE9E0;
+  --mist: #9AA4B2;
+  --fog: #C3CAD3;
   --grid: rgba(213,218,225,.06);
   --sans: "Instrument Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   --max: 1160px;
   --arm: 18px;
   --stroke: 3px;
+  --ease: cubic-bezier(.2,.7,.2,1);
   color-scheme: light;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
-body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--sans);
-  font-size: 17px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--ink); }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 a { color: inherit; }
+img, svg { display: block; max-width: 100%; }
 :focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; border-radius: 2px; }
-
-.wrap {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-}
+.wrap { max-width: var(--max); margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 @media (min-width: 720px) { .wrap { padding-left: max(32px, env(safe-area-inset-left, 0px)); padding-right: max(32px, env(safe-area-inset-right, 0px)); } }
-
-.label {
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
+.label { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; }
+.tag { justify-self: start; width: fit-content; display: inline-flex; align-items: center; gap: 8px; padding: 5px 10px; border-radius: 3px; background: var(--blush); color: var(--ember); }
+.tag::before { content: ""; width: 6px; height: 6px; background: currentColor; }
+.ink .tag { background: rgba(255,90,31,.14); color: var(--signal); }
 h1, h2, h3 { font-weight: 600; letter-spacing: -0.03em; text-wrap: balance; margin: 0; }
-h2 { font-size: clamp(32px, 4.6vw, 52px); line-height: 1.08; }
-h3 { font-size: 22px; line-height: 1.25; letter-spacing: -0.015em; }
+h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; }
+h3 { font-size: 20px; line-height: 1.25; letter-spacing: -0.015em; }
 p { margin: 0; }
+.hl { color: var(--ember); }
+.ink .hl { color: var(--signal); }
+.dot { color: var(--signal); }
+.sub { font-size: 18px; color: var(--graphite); max-width: 34em; }
+.ink .sub { color: var(--fog); }
+section { scroll-margin-top: 84px; }
+.band { padding-block: 120px; }
+@media (max-width: 720px) { .band { padding-block: 80px; } }
 
 /* The corner frame, drawn with eight gradients so any element can wear it */
 .framed {
@@ -81,375 +88,615 @@ p { margin: 0; }
     linear-gradient(var(--c), var(--c)) bottom right / var(--stroke) var(--arm);
   background-repeat: no-repeat;
 }
+/* Corner brackets as four spans, so they can animate in */
+.brackets { position: absolute; inset: -18px; pointer-events: none; }
+.brackets i { position: absolute; width: 34px; height: 34px; border: 0 solid var(--signal); opacity: 0; transform: scale(1.25); transition: opacity .45s var(--ease), transform .45s var(--ease); }
+.brackets i:nth-child(1) { top: 0; left: 0; border-top-width: 4px; border-left-width: 4px; transform-origin: top left; }
+.brackets i:nth-child(2) { top: 0; right: 0; border-top-width: 4px; border-right-width: 4px; transform-origin: top right; }
+.brackets i:nth-child(3) { bottom: 0; left: 0; border-bottom-width: 4px; border-left-width: 4px; transform-origin: bottom left; }
+.brackets i:nth-child(4) { bottom: 0; right: 0; border-bottom-width: 4px; border-right-width: 4px; transform-origin: bottom right; }
+.on > .brackets i, .brackets.on i { opacity: 1; transform: none; }
 
-/* ---------- Header ---------- */
-.top {
-  position: sticky;
-  top: env(safe-area-inset-top, 0px);
-  z-index: 5;
-  background: rgba(14,23,38,.94);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--slate);
-  color: var(--paper);
-}
-.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
-.logo {
-  --arm: 9px; --stroke: 2px;
-  display: inline-block;
-  padding: 5px 11px 7px;
-  font-weight: 600;
-  font-size: 22px;
-  line-height: 1;
-  letter-spacing: -0.045em;
-  text-decoration: none;
-  color: var(--paper);
-}
-.nav { display: flex; align-items: center; gap: 28px; }
-.nav a { text-decoration: none; font-size: 15px; color: var(--mist); transition: color .15s; }
-.nav a:hover { color: var(--paper); }
-.nav .btn { color: var(--ink); }
-@media (max-width: 760px) { .nav .hide-sm { display: none; } }
-
-.btn {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-family: var(--sans);
-  font-size: 15px; font-weight: 600;
-  padding: 12px 20px;
-  border-radius: 3px;
-  border: 1px solid transparent;
-  text-decoration: none;
-  cursor: pointer;
-  transition: transform .15s, background-color .15s, border-color .15s;
-}
+/* ---------- Buttons ---------- */
+.btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--sans); font-size: 15px; font-weight: 600; padding: 13px 22px; border-radius: 999px; border: 1px solid transparent; text-decoration: none; cursor: pointer; transition: transform .15s, background-color .2s, border-color .2s, color .2s; white-space: nowrap; }
 .btn:hover { transform: translateY(-1px); }
+.btn-ink { background: var(--ink); color: var(--paper); }
+.btn-ink:hover { background: var(--slate); }
 .btn-signal { background: var(--signal); color: var(--ink); }
 .btn-signal:hover { background: #FF7240; }
 .btn-ghost { background: transparent; color: var(--paper); border-color: #3A475B; }
 .btn-ghost:hover { border-color: var(--paper); }
+.btn-paper { background: var(--white); color: var(--ink); }
+.link { font-weight: 600; font-size: 15px; text-decoration: none; border-bottom: 2px solid currentColor; padding-bottom: 2px; }
+.link:hover { color: var(--ember); }
+.arrow { font-family: var(--sans); }
 
-/* ---------- Ink bands ---------- */
-.ink {
-  background-color: var(--ink);
-  background-image:
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 32px 32px;
-  color: var(--paper);
-}
+/* ---------- Header ---------- */
+.top { position: sticky; top: 0; z-index: 20; padding-top: max(12px, env(safe-area-inset-top, 0px)); transition: background-color .3s; }
+.top .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 8px 8px 8px 22px; background: rgba(255,255,255,.88); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--rule); border-radius: 999px; transition: background-color .3s, border-color .3s, color .3s; }
+.logo { font-weight: 600; font-size: 23px; line-height: 1; letter-spacing: -0.045em; text-decoration: none; }
+.nav { display: flex; align-items: center; gap: 4px; }
+.nav a:not(.btn) { text-decoration: none; font-size: 15px; padding: 7px 13px; border-radius: 999px; transition: background-color .2s, color .2s; }
+.nav a:not(.btn):hover { background: rgba(14,23,38,.06); }
+.nav a.active { background: var(--blush); color: var(--ember); }
+.nav .btn { margin-left: 10px; padding: 11px 20px; }
+@media (max-width: 860px) { .nav .hide-sm { display: none; } .top .bar { padding-left: 18px; } }
+.top.dark .bar { background: rgba(14,23,38,.9); border-color: var(--slate); color: var(--paper); }
+.top.dark .nav a:not(.btn):hover { background: rgba(255,255,255,.08); }
+.top.dark .nav a.active { background: rgba(255,90,31,.16); color: var(--signal); }
+.top.dark .nav .btn-ink { background: var(--signal); color: var(--ink); }
 
 /* ---------- Hero ---------- */
-.hero .wrap {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  padding-block: 96px 112px;
+.hero { position: relative; }
+.hero-stage { min-height: calc(100vh - 80px); display: flex; align-items: center; padding-block: 48px 64px; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 56px; align-items: center; width: 100%; }
+@media (min-width: 961px) { .js .hero.pin { height: 175vh; } .js .hero.pin .hero-stage { position: sticky; top: 72px; height: calc(100vh - 72px); min-height: 0; padding-block: 0; } }
+@media (max-width: 960px) { .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 56px; } .hero-stage { min-height: 0; padding-block: 40px 72px; } }
+.hero h1 { font-size: clamp(50px, 7.4vw, 96px); line-height: .98; letter-spacing: -0.045em; margin-top: 26px; }
+.hero .lede { margin-top: 26px; max-width: 30em; font-size: 19px; color: var(--graphite); }
+.hero .ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; margin-top: 36px; }
+.chips { display: flex; flex-wrap: wrap; gap: 14px 26px; margin: 40px 0 0; padding: 0; list-style: none; }
+.chips li { display: flex; align-items: center; gap: 10px; font-size: 14.5px; line-height: 1.25; font-weight: 500; }
+.chip-ico { flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--blush); display: grid; place-items: center; }
+.chip-ico span { --arm: 5px; --stroke: 2px; width: 14px; height: 14px; }
+
+/* Mock-up: a wireframe that becomes a dashboard */
+.mock-wrap { position: relative; max-width: 470px; width: 100%; justify-self: center; }
+.mock { position: relative; background: var(--white); border-radius: 14px; box-shadow: 0 24px 60px rgba(14,23,38,.12), 0 0 0 1px rgba(14,23,38,.06); overflow: hidden; }
+.mock .win { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: #EEF1F4; transition: background-color .5s; }
+.mock .win b { font-weight: 600; font-size: 16px; color: transparent; background: var(--rule); border-radius: 3px; transition: color .4s, background-color .4s; }
+.mock .win .lights { display: flex; gap: 6px; }
+.mock .win .lights i { width: 11px; height: 11px; border-radius: 50%; background: var(--rule); transition: background-color .4s; }
+.mock .body { padding: 18px; display: grid; gap: 12px; }
+.m-card { border-radius: 8px; border: 1px solid var(--rule); background: var(--white); padding: 12px 14px; transition: background-color .5s, border-color .5s; }
+.m-week { display: flex; justify-content: space-between; align-items: flex-end; background: #F6F7F9; border-color: transparent; }
+.m-k { font-size: 12.5px; color: var(--graphite); }
+.m-v { font-size: 26px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.15; }
+.m-bars { display: flex; align-items: flex-end; gap: 6px; height: 62px; }
+.m-bars i { width: 14px; border-radius: 2px; background: var(--rule); transform-origin: bottom; transform: scaleY(.35); transition: transform .7s var(--ease), background-color .5s; }
+.m-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.m-rows { display: grid; gap: 8px; }
+.m-row { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px; background: #F6F7F9; font-size: 14px; }
+.m-row .av { width: 20px; height: 20px; border-radius: 50%; background: var(--rule); transition: background-color .5s; }
+.m-row .st { margin-left: auto; font-size: 11.5px; padding: 2px 8px; border-radius: 999px; background: #E9ECF0; color: var(--graphite); }
+.m-row .st.paid { background: var(--blush); color: var(--ember); }
+/* wire state: text hidden behind grey bars */
+.mock .w { position: relative; color: transparent; transition: color .4s; }
+.mock .w::after { content: ""; position: absolute; inset: 15% 0; border-radius: 3px; background: var(--rule); transition: opacity .4s; }
+.mock .st { transition: opacity .4s; opacity: 0; }
+.s1 .win { background: var(--ink); }
+.s1 .win b { color: var(--white); background: transparent; }
+.s1 .win .lights i { background: #2A3547; }
+.s1 .win .lights i:last-child { background: var(--signal); }
+.s2 .m-week .w, .s2 .m-stats .w { color: inherit; }
+.s2 .m-week .w::after, .s2 .m-stats .w::after { opacity: 0; }
+.s2 .m-bars i { transform: none; background: var(--fog); }
+.s2 .m-bars i:last-child { background: var(--signal); }
+.s3 .m-rows .w { color: inherit; }
+.s3 .m-rows .w::after { opacity: 0; }
+.s3 .m-row .st { opacity: 1; }
+.s3 .m-row .av { background: var(--fog); }
+.s3 .m-row .av.warm { background: #F6B9A1; }
+.mock-progress { margin-top: 28px; }
+.mock-progress .track { height: 5px; border-radius: 999px; background: var(--rule); overflow: hidden; }
+.mock-progress .fill { height: 100%; width: 0; background: var(--signal); border-radius: 999px; transition: width .25s linear; }
+.mock-progress .steps { display: flex; justify-content: space-between; margin-top: 10px; font-size: 13px; color: var(--mist); }
+.mock-progress .steps span { transition: color .3s; }
+.mock-progress .steps span.on { color: var(--ink); font-weight: 500; }
+.mock-progress .pct { font-family: var(--mono); font-size: 12px; color: var(--ink); min-width: 4ch; text-align: right; }
+
+/* ---------- Why: one line ---------- */
+.why { text-align: center; }
+.why .wrap { max-width: 980px; }
+.why h2 { font-size: clamp(34px, 5.4vw, 66px); line-height: 1.08; }
+.why .word { color: var(--fog); transition: color .35s; }
+.why .word.lit { color: var(--ink); }
+.why .word.hl.lit { color: var(--ember); }
+.why .after { margin-top: 30px; font-size: 19px; color: var(--graphite); opacity: 0; transform: translateY(8px); transition: opacity .6s, transform .6s var(--ease); }
+.why.done .after { opacity: 1; transform: none; }
+
+/* ---------- Process path ---------- */
+.how .head, .head { display: grid; gap: 18px; max-width: 760px; }
+.path-box { position: relative; margin-top: 72px; }
+.path-svg { width: 100%; height: auto; overflow: visible; }
+.path-svg .base { fill: none; stroke: var(--rule); stroke-width: 2; stroke-dasharray: 2 8; stroke-linecap: round; }
+.path-svg .draw { fill: none; stroke: var(--signal); stroke-width: 4; stroke-linecap: round; }
+.path-svg .node circle { fill: var(--white); stroke: var(--rule); stroke-width: 2; transition: fill .35s, stroke .35s, r .35s var(--ease); }
+.path-svg .node text { font-family: var(--mono); font-size: 15px; font-weight: 500; fill: var(--mist); text-anchor: middle; dominant-baseline: central; transition: fill .35s; }
+.path-svg .node.on circle { fill: var(--signal); stroke: var(--signal); }
+.path-svg .node.on text { fill: var(--white); }
+.path-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: 28px; }
+.pstep { opacity: .45; transform: translateY(6px); transition: opacity .45s, transform .45s var(--ease); }
+.pstep.on { opacity: 1; transform: none; }
+.pstep .label { color: var(--ember); }
+.pstep h3 { margin-top: 8px; }
+.pstep p { margin-top: 8px; font-size: 15.5px; color: var(--graphite); }
+.pstep .out { margin-top: 14px; font-family: var(--mono); font-size: 12px; letter-spacing: .04em; color: var(--ink); display: inline-block; padding: 4px 8px; border: 1px solid var(--rule); border-radius: 3px; background: var(--white); }
+.vline { display: none; }
+@media (max-width: 860px) {
+  .path-svg { display: none; }
+  .path-box { margin-top: 48px; padding-left: 44px; }
+  .vline { display: block; position: absolute; left: 13px; top: 6px; bottom: 6px; width: 3px; background: var(--rule); border-radius: 3px; }
+  .vline i { display: block; width: 100%; height: 0; background: var(--signal); border-radius: 3px; }
+  .path-steps { grid-template-columns: minmax(0, 1fr); gap: 40px; margin-top: 0; }
+  .pstep { position: relative; }
+  .pstep::before { content: attr(data-n); position: absolute; left: -44px; top: -2px; width: 29px; height: 29px; border-radius: 50%; background: var(--white); border: 2px solid var(--rule); font-family: var(--mono); font-size: 12px; display: grid; place-items: center; color: var(--mist); transition: background-color .35s, border-color .35s, color .35s; }
+  .pstep.on::before { background: var(--signal); border-color: var(--signal); color: var(--white); }
 }
-@media (max-width: 900px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); padding-block: 56px 72px; gap: 48px; } }
-.hero .label { color: var(--mist); }
-.hero h1 {
-  font-size: clamp(48px, 8vw, 104px);
-  line-height: .98;
-  letter-spacing: -0.045em;
-  margin-top: 24px;
+
+/* ---------- Framed before it's coded ---------- */
+.framed-sec .wrap { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 64px; align-items: center; }
+@media (max-width: 900px) { .framed-sec .wrap { grid-template-columns: minmax(0, 1fr); gap: 48px; } }
+.ticks { list-style: none; padding: 0; margin: 32px 0 0; display: grid; gap: 14px; }
+.ticks li { display: flex; gap: 12px; align-items: center; font-size: 17px; }
+.tick { flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--blush); position: relative; }
+.tick::after { content: ""; position: absolute; left: 7px; top: 4px; width: 6px; height: 10px; border: solid var(--ember); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.blueprint { position: relative; border-radius: 14px; background-color: var(--ink); background-image: linear-gradient(rgba(213,218,225,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(213,218,225,.07) 1px, transparent 1px); background-size: 28px 28px; padding: 44px 24px; display: grid; place-items: center; min-height: 520px; overflow: hidden; }
+.bp-note { position: absolute; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--signal); }
+.bp-note.n1 { top: 18px; right: 18px; background: var(--white); color: var(--ink); padding: 3px 9px; border-radius: 999px; }
+.bp-note.n1::before { content: "● "; color: var(--signal); }
+.bp-note.n2 { left: 18px; top: 46%; writing-mode: vertical-rl; transform: rotate(180deg); }
+.bp-note.n3 { right: 18px; bottom: 22%; }
+.phone-wrap { position: relative; }
+.phone { position: relative; width: 236px; height: 440px; border-radius: 30px; background: var(--white); padding: 14px; box-shadow: 0 0 0 6px #1F2A3C; overflow: hidden; }
+.phone .layer { position: absolute; inset: 14px; transition: opacity .6s var(--ease), transform .6s var(--ease); }
+.phone .wire { display: grid; gap: 10px; align-content: start; }
+.wire .wl { height: 10px; border: 1.5px solid #8A93A0; border-radius: 3px; }
+.wire .wbox { height: 120px; border: 1.5px solid #8A93A0; border-radius: 6px; position: relative; overflow: hidden; }
+.wire .wbox::before, .wire .wbox::after { content: ""; position: absolute; left: 50%; top: 50%; width: 140%; height: 1.5px; background: #8A93A0; transform: translate(-50%, -50%) rotate(31deg); }
+.wire .wbox::after { transform: translate(-50%, -50%) rotate(-31deg); }
+.wire .wrow { height: 34px; border: 1.5px solid #8A93A0; border-radius: 6px; display: flex; align-items: center; padding-left: 10px; }
+.wire .wrow::before { content: ""; width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid #8A93A0; }
+.phone .app { opacity: 0; transform: translateY(14px); display: grid; gap: 10px; align-content: start; font-size: 13px; }
+.app .hi { display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 15px; }
+.app .hi i { width: 16px; height: 16px; border-radius: 50%; background: var(--signal); }
+.app .next { background: var(--ink); color: var(--paper); border-radius: 12px; padding: 14px; }
+.app .next small { font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em; color: var(--mist); }
+.app .next b { display: block; font-size: 18px; letter-spacing: -0.02em; margin-top: 4px; }
+.app .next span { font-size: 11px; color: var(--mist); }
+.app .next em { display: inline-block; margin-top: 10px; font-style: normal; font-size: 11px; font-weight: 600; background: var(--signal); color: var(--ink); padding: 4px 10px; border-radius: 999px; }
+.app .wk { font-weight: 600; margin-top: 4px; }
+.app .item { display: flex; align-items: center; gap: 10px; background: #F4F6F8; border-radius: 10px; padding: 9px 10px; }
+.app .item i { width: 18px; height: 18px; border-radius: 50%; background: #F6B9A1; }
+.app .item small { display: block; color: var(--graphite); font-size: 10.5px; }
+.app .cta { margin-top: 4px; text-align: center; background: var(--ink); color: var(--paper); border-radius: 999px; padding: 9px; font-weight: 600; }
+.blueprint.on .wire { opacity: 0; transform: translateY(-10px); }
+.blueprint.on .app { opacity: 1; transform: none; }
+.phone-wrap .brackets { inset: -16px; }
+
+/* ---------- Services ---------- */
+.tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 56px; }
+@media (max-width: 960px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .tiles { grid-template-columns: minmax(0, 1fr); } .tile { min-height: 0; } .tile h3 { padding-top: 18px; } }
+.tile { position: relative; background: var(--white); border: 1px solid var(--rule); border-radius: 8px; padding: 18px 18px 20px; min-height: 196px; display: flex; flex-direction: column; transition: background-color .25s, color .25s, border-color .25s, transform .25s var(--ease); opacity: 0; transform: translateY(14px); }
+.tiles.in .tile { opacity: 1; transform: none; transition: opacity .5s var(--ease), transform .5s var(--ease), background-color .25s, color .25s, border-color .25s; transition-delay: calc(var(--i) * 60ms), calc(var(--i) * 60ms), 0s, 0s, 0s; }
+.tile .top-row { display: flex; justify-content: space-between; align-items: center; }
+.tile .n { font-family: var(--mono); font-size: 12px; color: var(--ember); }
+.tile .grp { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--mist); }
+.tile h3 { margin-top: auto; padding-top: 28px; font-size: 19px; }
+.tile p { margin-top: 6px; font-size: 14.5px; line-height: 1.5; color: var(--graphite); transition: color .25s; }
+.tile .brackets { inset: -7px; }
+.tile .brackets i { width: 18px; height: 18px; border-width: 0; }
+.tile .brackets i:nth-child(1) { border-top-width: 3px; border-left-width: 3px; }
+.tile .brackets i:nth-child(2) { border-top-width: 3px; border-right-width: 3px; }
+.tile .brackets i:nth-child(3) { border-bottom-width: 3px; border-left-width: 3px; }
+.tile .brackets i:nth-child(4) { border-bottom-width: 3px; border-right-width: 3px; }
+@media (hover: hover) {
+  .tiles.in .tile:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); transform: translateY(-3px); transition-delay: 0s; }
+  .tile:hover p { color: var(--fog); }
+  .tile:hover .grp { color: var(--mist); }
+  .tile:hover .n { color: var(--signal); }
+  .tile:hover .brackets i { opacity: 1; transform: none; }
 }
-.hero h1 .framed {
-  --arm: clamp(14px, 1.6vw, 22px); --stroke: clamp(3px, .35vw, 4px);
-  display: inline-block;
-  padding: .02em .14em .1em;
-  margin-left: -.14em;
-  animation: frame-in .9s cubic-bezier(.2,.7,.2,1) .2s both;
+
+/* ---------- Team ---------- */
+.ink { background-color: var(--ink); background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size: 32px 32px; color: var(--paper); }
+.team h2 .mark { background: var(--signal); color: var(--ink); padding: 0 .12em; margin: 0 -.04em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.team .sub { margin-top: 20px; }
+.team-diagram { position: relative; margin-top: 64px; }
+.team-svg { width: 100%; height: auto; }
+.team-svg .role rect { fill: var(--slate); stroke: #2C384B; }
+.team-svg .role text { font-family: var(--sans); font-size: 17px; fill: var(--paper); dominant-baseline: central; }
+.team-svg .ln { fill: none; stroke: #3A475B; stroke-width: 1.5; stroke-dasharray: 5 6; }
+.team-svg .ln-hot { fill: none; stroke: var(--signal); stroke-width: 2.5; stroke-dasharray: var(--len, 700); stroke-dashoffset: var(--len, 700); transition: stroke-dashoffset 1.4s var(--ease); }
+.team-diagram.on .ln-hot { stroke-dashoffset: 0; }
+.team-svg .you circle { fill: var(--white); }
+.team-svg .you text { font-family: var(--sans); font-weight: 600; font-size: 22px; fill: var(--ink); text-anchor: middle; dominant-baseline: central; }
+.team-svg .hub { fill: var(--signal); }
+.team-svg .yb { fill: none; stroke: var(--signal); stroke-width: 4; opacity: 0; transition: opacity .5s 1.1s; }
+.team-diagram.on .yb { opacity: 1; }
+.team-chips { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; justify-content: center; }
+.team-chips span { background: var(--white); color: var(--ink); font-size: 14.5px; font-weight: 500; padding: 8px 14px; border-radius: 6px; opacity: 0; transform: translateY(8px); transition: opacity .5s var(--ease), transform .5s var(--ease); }
+.team-diagram.on .team-chips span { opacity: 1; transform: none; }
+.team-diagram.on .team-chips span:nth-child(2) { transition-delay: .25s; }
+.team-diagram.on .team-chips span:nth-child(3) { transition-delay: .5s; }
+.team-m { display: none; }
+@media (max-width: 720px) {
+  .team-svg { display: none; }
+  .team-m { display: grid; justify-items: center; gap: 0; }
+  .team-m .roles { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .team-m .roles span { background: var(--slate); border: 1px solid #2C384B; padding: 6px 12px; border-radius: 6px; font-size: 14.5px; }
+  .team-m .stem { width: 3px; height: 64px; margin-top: 16px; background: linear-gradient(var(--signal), var(--signal)) top / 100% 0 no-repeat, #3A475B; transition: background-size 1s var(--ease); }
+  .team-diagram.on .team-m .stem { background-size: 100% 100%; }
+  .team-m .you { position: relative; margin-top: 16px; width: 86px; height: 86px; border-radius: 50%; background: var(--white); color: var(--ink); display: grid; place-items: center; font-weight: 600; font-size: 20px; }
+  .team-m .you .brackets { inset: -12px; }
+  .team-m .you .brackets i { width: 20px; height: 20px; }
+  .team-diagram.on .team-m .you .brackets i { opacity: 1; transform: none; transition-delay: .9s; }
 }
-@keyframes frame-in { from { --arm: 0px; } }
-@property --arm { syntax: "<length>"; inherits: true; initial-value: 18px; }
-.hero h1 .then { color: var(--mist); }
-.hero .lede { margin-top: 28px; max-width: 34em; font-size: 19px; color: #C7CED8; }
-.hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
 
-/* ---------- Paper sections ---------- */
-section { scroll-margin-top: 72px; }
-.band { padding-block: 104px; }
-@media (max-width: 720px) { .band { padding-block: 72px; } }
-.paper .label { color: var(--ember); }
-.head { display: grid; gap: 18px; max-width: 760px; }
-.head p { font-size: 19px; color: var(--graphite); max-width: 36em; }
-
-/* Tension */
-.tension .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: end; }
-@media (max-width: 860px) { .tension .wrap { grid-template-columns: minmax(0, 1fr); gap: 40px; } }
-.tension h2 em { font-style: normal; color: var(--ember); }
-.missing { display: grid; gap: 0; border-top: 1px solid var(--rule); }
-.missing li { display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--rule); font-size: 18px; font-weight: 500; }
-.missing li span { font-family: var(--mono); font-size: 12px; color: var(--graphite); letter-spacing: .08em; padding-top: 5px; text-transform: uppercase; }
-ul.missing, ul.plain { list-style: none; margin: 0; padding: 0; }
-.missing-note { margin-top: 18px; font-size: 15px; color: var(--graphite); }
-
-/* Order: four steps, corners light up as the work completes */
-.order { background: var(--white); border-block: 1px solid var(--rule); }
-.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-top: 56px; }
-@media (max-width: 980px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .steps { grid-template-columns: minmax(0, 1fr); } }
-.step {
-  --arm: 22px; --stroke: 3px;
-  --tl: var(--rule); --tr: var(--rule); --br: var(--rule); --bl: var(--rule);
-  padding: 30px 26px 32px;
-  display: grid; align-content: start; gap: 14px;
-  background:
-    linear-gradient(var(--tl), var(--tl)) top left / var(--arm) var(--stroke),
-    linear-gradient(var(--tl), var(--tl)) top left / var(--stroke) var(--arm),
-    linear-gradient(var(--tr), var(--tr)) top right / var(--arm) var(--stroke),
-    linear-gradient(var(--tr), var(--tr)) top right / var(--stroke) var(--arm),
-    linear-gradient(var(--br), var(--br)) bottom right / var(--arm) var(--stroke),
-    linear-gradient(var(--br), var(--br)) bottom right / var(--stroke) var(--arm),
-    linear-gradient(var(--bl), var(--bl)) bottom left / var(--arm) var(--stroke),
-    linear-gradient(var(--bl), var(--bl)) bottom left / var(--stroke) var(--arm),
-    var(--paper);
-  background-repeat: no-repeat;
-}
-.step:nth-child(n+1) { --tl: var(--signal); }
-.step:nth-child(n+2) { --tr: var(--signal); }
-.step:nth-child(n+3) { --br: var(--signal); }
-.step:nth-child(n+4) { --bl: var(--signal); }
-.step .label { color: var(--graphite); }
-.step h3 { font-size: 28px; }
-.step p { color: var(--graphite); font-size: 16px; }
-.step .out { margin-top: 6px; font-family: var(--mono); font-size: 12.5px; color: var(--ink); letter-spacing: .02em; }
-.step .out::before { content: "You get: "; color: var(--graphite); }
-
-/* Services */
-.groups { display: grid; gap: 0; margin-top: 56px; border-top: 1px solid var(--ink); }
-.group { display: grid; grid-template-columns: minmax(0, 280px) minmax(0, 1fr); gap: 32px; padding-block: 36px; border-bottom: 1px solid var(--rule); }
-@media (max-width: 760px) { .group { grid-template-columns: minmax(0, 1fr); gap: 20px; padding-block: 28px; } }
-.group-name { display: grid; gap: 8px; align-content: start; }
-.group-name h3 { font-size: 30px; }
-.group-name p { color: var(--graphite); font-size: 15px; }
-.svc { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 40px; }
-@media (max-width: 620px) { .svc { grid-template-columns: minmax(0, 1fr); gap: 22px; } }
-.svc div { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 4px 0; }
-.svc .n { font-family: var(--mono); font-size: 12px; color: var(--graphite); padding-top: 6px; grid-row: span 2; }
-.svc h4 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -0.01em; }
-.svc p { color: var(--graphite); font-size: 15.5px; }
-
-/* Promises */
+/* ---------- Promises + pricing hint ---------- */
 .promises .wrap { display: grid; gap: 56px; }
-.promise-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
-@media (max-width: 860px) { .promise-grid { grid-template-columns: minmax(0, 1fr); } }
-.promise { background: var(--paper); padding: 32px 28px; display: grid; gap: 10px; align-content: start; }
-.promise q { quotes: none; font-size: 22px; font-weight: 600; letter-spacing: -0.015em; line-height: 1.3; }
-.promise p { color: var(--graphite); font-size: 15.5px; }
+.p-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; }
+@media (max-width: 900px) { .p-grid { grid-template-columns: minmax(0, 1fr); } }
+.checklist { background: var(--white); border: 1px solid var(--rule); border-radius: 10px; padding: 10px 24px; margin: 0; list-style: none; }
+.checklist li { display: flex; align-items: center; gap: 12px; padding: 16px 0; border-bottom: 1px solid var(--rule); opacity: 0; transform: translateX(-8px); transition: opacity .45s var(--ease), transform .45s var(--ease); transition-delay: calc(var(--i) * 90ms); }
+.checklist li:last-child { border-bottom: 0; }
+.checklist.in li { opacity: 1; transform: none; }
+.checklist .what { font-size: 16px; }
+.checklist .val { white-space: nowrap; margin-left: auto; font-weight: 600; font-size: 15px; text-align: right; }
+.checklist .val.hl { color: var(--ember); }
+.plans { background: var(--blush); border-radius: 10px; padding: 26px 24px 22px; display: flex; flex-direction: column; }
+.plans h3 { font-size: 19px; }
+.plans > p { margin-top: 6px; font-size: 15px; color: var(--graphite); }
+.plan-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: end; margin-top: auto; padding-top: 36px; }
+.plan { position: relative; background: var(--white); border-radius: 8px; padding: 14px; display: flex; flex-direction: column; justify-content: flex-end; transform-origin: bottom; transform: scaleY(.6); opacity: 0; transition: transform .6s var(--ease), opacity .6s var(--ease); }
+.plans.in .plan { transform: none; opacity: 1; }
+.plan:nth-child(1) { min-height: 96px; }
+.plan:nth-child(2) { min-height: 138px; transition-delay: .12s; }
+.plan:nth-child(3) { min-height: 184px; transition-delay: .24s; background: var(--ink); color: var(--paper); }
+.plan b { font-size: 18px; letter-spacing: -0.02em; }
+.plan small { font-size: 12.5px; color: var(--graphite); line-height: 1.35; }
+.plan:nth-child(3) small { color: var(--mist); }
+.plan .brackets { inset: -8px; }
+.plan .brackets i { width: 18px; height: 18px; border-width: 0; }
+.plan .brackets i:nth-child(1) { border-top-width: 3px; border-left-width: 3px; }
+.plan .brackets i:nth-child(2) { border-top-width: 3px; border-right-width: 3px; }
+.plan .brackets i:nth-child(3) { border-bottom-width: 3px; border-left-width: 3px; }
+.plan .brackets i:nth-child(4) { border-bottom-width: 3px; border-right-width: 3px; }
+.plans.in .plan .brackets i { opacity: 1; transform: none; transition-delay: .8s; }
+.plans .foot { margin-top: 16px; font-size: 13.5px; color: var(--graphite); }
 
-/* Contact */
-.contact .wrap { padding-block: 104px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 56px; align-items: center; }
-@media (max-width: 860px) { .contact .wrap { grid-template-columns: minmax(0, 1fr); padding-block: 72px; gap: 40px; } }
-.contact .label { color: var(--mist); }
-.contact h2 { margin-top: 20px; font-size: clamp(36px, 5.4vw, 64px); }
-.contact h2 .framed { --arm: 16px; --stroke: 3px; display: inline-block; padding: 0 .12em .06em; }
-.contact .lede { margin-top: 22px; color: #C7CED8; font-size: 18px; max-width: 32em; }
-.reach { display: grid; gap: 14px; }
-.reach-row {
-  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 16px;
-  background: var(--slate); border: 1px solid #2A374B; border-radius: 4px; padding: 18px 20px;
+/* ---------- Contact card ---------- */
+.contact { padding-block: 40px 120px; }
+@media (max-width: 720px) { .contact { padding-block: 16px 72px; } }
+.cta-card { border-radius: 16px; padding: clamp(32px, 6vw, 72px); display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 48px; align-items: center; }
+@media (max-width: 900px) { .cta-card { grid-template-columns: minmax(0, 1fr); } .cta-card .mini-wrap { display: none; } }
+.cta-card h2 { margin-top: 20px; font-size: clamp(38px, 5.6vw, 66px); }
+.cta-card .sub { margin-top: 20px; }
+.cta-card .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+.reach { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-top: 30px; padding-top: 26px; border-top: 1px solid var(--slate); }
+.email-pill { display: inline-flex; align-items: center; gap: 2px; background: var(--white); border-radius: 999px; padding: 4px 4px 4px 18px; color: var(--ink); }
+.email-pill a { font-weight: 600; text-decoration: none; font-size: 15.5px; }
+.email-pill button { font: 500 12px var(--mono); letter-spacing: .06em; text-transform: uppercase; background: var(--paper); color: var(--ink); border: 0; border-radius: 999px; padding: 8px 12px; margin-left: 10px; cursor: pointer; }
+.email-pill button:hover { background: var(--rule); }
+.reach .ig { font-size: 15px; color: var(--fog); text-decoration: none; }
+.reach .ig:hover { color: var(--paper); }
+.mini-wrap { position: relative; justify-self: center; width: 100%; max-width: 300px; }
+.mini-wrap .mock { transform: rotate(2deg); }
+.mini-wrap .brackets { inset: -16px; }
+.mini-wrap .brackets i { opacity: 1; transform: none; }
+
+/* ---------- Footer ---------- */
+footer { padding-block: 96px 40px; }
+.f-logo { display: inline-block; --arm: clamp(16px, 2.4vw, 28px); --stroke: clamp(3px, .4vw, 5px); padding: .02em .16em .12em; font-size: clamp(64px, 12vw, 148px); font-weight: 600; letter-spacing: -0.05em; line-height: 1; margin-left: -.16em; }
+.f-tag { margin-top: 26px; font-size: clamp(22px, 2.6vw, 30px); font-weight: 600; letter-spacing: -0.02em; }
+.f-cols { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; margin-top: 56px; }
+@media (max-width: 760px) { .f-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.f-cols .label { color: var(--mist); font-size: 11px; }
+.f-cols a, .f-cols p { display: block; margin-top: 8px; text-decoration: none; font-size: 16px; overflow-wrap: anywhere; }
+.f-cols a:hover { color: var(--signal); }
+.f-base { margin-top: 72px; padding-top: 22px; border-top: 1px solid var(--slate); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13.5px; color: var(--mist); }
+
+@media (max-width: 960px) { .mock-wrap .brackets { inset: -10px; } .mock-wrap .brackets i { width: 26px; height: 26px; } }
+@media (max-width: 420px) { .checklist { padding: 6px 16px; } .checklist .what { font-size: 15px; } .checklist .val { font-size: 14px; } }
+
+/* ---------- Motion: reveal on scroll ---------- */
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.js .reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .reveal, .tile, .checklist li, .plan, .pstep, .team-chips span, .why .after { opacity: 1 !important; transform: none !important; }
 }
-.reach-row .label { font-size: 11px; display: block; margin-bottom: 6px; }
-.reach-row .val { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; overflow-wrap: anywhere; user-select: all; }
-.reach-row a.val { text-decoration: none; user-select: auto; }
-.reach-row a.val:hover { color: var(--signal); }
-.copy { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; background: transparent; color: var(--paper); border: 1px solid #3A475B; border-radius: 3px; padding: 9px 12px; cursor: pointer; }
-.copy:hover { border-color: var(--paper); }
-.reach-note { font-size: 14px; color: var(--mist); }
-
-footer { background: var(--ink); color: var(--mist); border-top: 1px solid var(--slate); }
-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; padding-block: 28px; font-size: 14px; }
-footer .tag { color: var(--paper); font-weight: 600; letter-spacing: -0.01em; }
-
 </style>
 </head>
 <body>
-
-<header class="top">
+<header class="top" id="top">
   <div class="wrap">
-    <a class="logo framed" href="#top" aria-label="Mokkin, back to top">mokkin</a>
-    <nav class="nav" aria-label="Main">
-      <a class="hide-sm" href="#how">How we work</a>
-      <a class="hide-sm" href="#services">Services</a>
-      <a class="hide-sm" href="#promises">Working with us</a>
-      <a class="btn btn-signal" href="#contact" data-track="cta" data-location="nav">Start a conversation</a>
-    </nav>
+    <div class="bar">
+      <a class="logo" href="#hero" aria-label="Mokkin, back to top">mokkin</a>
+      <nav class="nav" aria-label="Main">
+        <a class="hide-sm" href="#how" data-sec="how">How we work</a>
+        <a class="hide-sm" href="#services" data-sec="services">What we build</a>
+        <a class="hide-sm" href="#team" data-sec="team">Team</a>
+        <a class="hide-sm" href="#contact" data-sec="contact">Contact</a>
+        <a class="btn btn-ink" href="https://wa.me/918587057678?text=Hi%20Mokkin%2C%20I%27d%20like%20to%20book%20a%20call." target="_blank" rel="noopener" data-book data-track="contact" data-method="book_call" data-location="nav">Book a call</a>
+      </nav>
+    </div>
   </div>
 </header>
 
-<main id="top">
-  <section class="ink hero">
-    <div class="wrap">
-      <div>
-        <p class="label">Product-led software studio</p>
-        <h1><span class="framed">Understood,</span><br><span class="then">then built.</span></h1>
-        <p class="lede">Mokkin builds websites, mobile apps and custom software for founders and organisations. We learn how your business works before we write any code, and we show you what it will look like before we build it.</p>
-        <div class="ctas">
-          <a class="btn btn-signal" href="#contact" data-track="cta" data-location="hero">Tell us what you need</a>
-          <a class="btn btn-ghost" href="#how" data-track="cta" data-location="hero">See how we work</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="paper band tension">
-    <div class="wrap">
-      <div class="head">
-        <p class="label">Why Mokkin</p>
-        <h2>Software can now be built faster than ever. Is it being built for what the business <em>actually needs?</em></h2>
-        <p>Founders and organisations can reach more agencies, freelancers and app builders than ever. Most software still goes wrong long before the first line of code, in the gap between what you mean and what a team hears.</p>
-      </div>
-      <div>
-        <ul class="missing">
-          <li>Clarity on what to build <span>first</span></li>
-          <li>A shared language with the builders <span>always</span></li>
-          <li>Confidence in each decision <span>always</span></li>
-          <li>Ownership of the product <span>yours</span></li>
-          <li>A partner who stays after launch <span>after</span></li>
-        </ul>
-        <p class="missing-note">What access to more builders does not give you on its own. This is the part we take care of.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="order band" id="how">
-    <div class="wrap">
-      <div class="head">
-        <p class="label" style="color:var(--ember)">How we work</p>
-        <h2>We don't reject speed or code. We change the order they arrive in.</h2>
-        <p>Every project moves through the same four steps. One product owner stays with you from the first conversation to launch, and after it.</p>
-      </div>
-      <ol class="steps" style="list-style:none;margin-block:56px 0;padding:0">
-        <li class="step">
-          <p class="label">Step 01</p>
-          <h3>Understand</h3>
-          <p>We ask about your business before your features: who it serves, how it runs today, what is getting in the way.</p>
-          <p class="out">a written problem statement</p>
-        </li>
-        <li class="step">
-          <p class="label">Step 02</p>
-          <h3>Picture</h3>
-          <p>We show you mock-ups you can point at and react to, with clear options and prices, before anything is built.</p>
-          <p class="out">mock-ups and priced options</p>
-        </li>
-        <li class="step">
-          <p class="label">Step 03</p>
-          <h3>Code</h3>
-          <p>One senior team designs and engineers what you approved. You can talk to the people building it directly.</p>
-          <p class="out">a working product, deployed</p>
-        </li>
-        <li class="step">
-          <p class="label">Step 04</p>
-          <h3>Care</h3>
-          <p>Launch care is included, and ongoing care is there for everything we build. We stay after the handover.</p>
-          <p class="out">updates, fixes and support</p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="paper band" id="services">
-    <div class="wrap">
-      <div class="head">
-        <p class="label">Services</p>
-        <h2>End to end, with one senior team.</h2>
-        <p>Eight services, grouped the way a project actually runs. Take the whole path or start where you are.</p>
-      </div>
-      <div class="groups">
-        <div class="group">
-          <div class="group-name">
-            <h3>Shape</h3>
-            <p>Decide what to build, and why.</p>
+<main>
+  <section class="hero pin" id="hero" aria-label="Introduction">
+    <div class="hero-stage">
+      <div class="wrap hero-grid">
+        <div class="reveal">
+          <p class="label tag">Product-led software studio</p>
+          <h1>Understood,<br>then <span class="hl">built</span><span class="dot">.</span></h1>
+          <p class="lede">We turn your idea into a website, app or custom software. We listen first, show it to you before we code it, and stay after launch.</p>
+          <div class="ctas">
+            <a class="btn btn-ink" href="https://wa.me/918587057678?text=Hi%20Mokkin%2C%20I%27d%20like%20to%20book%20a%20call." target="_blank" rel="noopener" data-book data-track="contact" data-method="book_call" data-location="hero">Book a call <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="link" href="#how" data-track="cta" data-location="hero">See how we work <span class="arrow" aria-hidden="true">↓</span></a>
           </div>
-          <div class="svc">
-            <div><span class="n">01</span><h4>Digital product consulting</h4><p>Turn an idea or a problem into a clear product plan with priorities you can defend.</p></div>
-            <div><span class="n">02</span><h4>Technology consulting</h4><p>Plain-language advice on platforms, tools and costs, so you can make decisions with confidence.</p></div>
-            <div><span class="n">03</span><h4>UI/UX design</h4><p>Flows and screens designed around the people who will use them, tested as mock-ups first.</p></div>
+          <ul class="chips">
+            <li><span class="chip-ico" aria-hidden="true"><span class="framed"></span></span>One point<br>of contact</li>
+            <li><span class="chip-ico" aria-hidden="true"><span class="framed"></span></span>See it<br>before code</li>
+            <li><span class="chip-ico" aria-hidden="true"><span class="framed"></span></span>Care after<br>launch</li>
+          </ul>
+        </div>
+
+        <div class="mock-wrap" id="hero-mock" aria-hidden="true">
+          <div class="mock-frame" style="position:relative">
+            <div class="brackets"><i></i><i></i><i></i><i></i></div>
+            <div class="mock">
+              <div class="win"><b>Orders</b><span class="lights"><i></i><i></i><i></i></span></div>
+              <div class="body">
+                <div class="m-card m-week">
+                  <div><div class="m-k w">This week</div><div class="m-v w">1,284</div></div>
+                  <div class="m-bars"><i style="height:40%"></i><i style="height:58%"></i><i style="height:46%"></i><i style="height:72%"></i><i style="height:62%"></i><i style="height:86%"></i><i style="height:100%"></i></div>
+                </div>
+                <div class="m-stats">
+                  <div class="m-card"><div class="m-k w">New</div><div class="m-v w">86</div></div>
+                  <div class="m-card"><div class="m-k w">Packed</div><div class="m-v w">212</div></div>
+                  <div class="m-card"><div class="m-k w">Shipped</div><div class="m-v w">986</div></div>
+                </div>
+                <div class="m-rows">
+                  <div class="m-row"><i class="av warm"></i><span class="w">Asha R.</span><span class="st paid">Paid</span></div>
+                  <div class="m-row"><i class="av"></i><span class="w">Kiran M.</span><span class="st">Packing</span></div>
+                  <div class="m-row"><i class="av warm"></i><span class="w">Dev S.</span><span class="st paid">Paid</span></div>
+                  <div class="m-row"><i class="av"></i><span class="w">Neha P.</span><span class="st">New</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mock-progress">
+            <div class="track"><div class="fill"></div></div>
+            <div class="steps"><span class="on">Understand</span><span>Picture</span><span>Build</span><span>Ship</span><span class="pct">0%</span></div>
           </div>
         </div>
-        <div class="group">
-          <div class="group-name">
+      </div>
+    </div>
+  </section>
+
+  <section class="band why" id="why" aria-label="Why Mokkin">
+    <div class="wrap">
+      <h2 id="why-line"><span class="word">Most</span> <span class="word">software</span> <span class="word">goes</span> <span class="word">wrong</span> <span class="word hl">before</span> <span class="word">the</span> <span class="word">first</span> <span class="word">line</span> <span class="word">of</span> <span class="word">code</span><span class="dot">.</span></h2>
+      <p class="after">Not in the code. In the understanding. So that is where we start.</p>
+    </div>
+  </section>
+
+  <section class="band how" id="how" style="padding-top:40px">
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="label tag">How we work</p>
+        <h2>Four steps from idea to <span class="hl">shipped</span><span class="dot">.</span></h2>
+        <p class="sub">A simple route, the same way every time. One product owner stays with you from the first conversation to launch, and after it.</p>
+      </div>
+      <div class="path-box" id="path">
+        <svg class="path-svg" viewBox="0 0 1000 170" aria-hidden="true">
+          <path class="base" d="M -40 120 C 40 120, 70 128, 125 128 S 260 100, 375 100 S 520 80, 625 80 S 780 112, 875 112 S 980 104, 1040 98"/>
+          <path class="draw" d="M -40 120 C 40 120, 70 128, 125 128 S 260 100, 375 100 S 520 80, 625 80 S 780 112, 875 112 S 980 104, 1040 98"/>
+          <g class="node" data-at="0.16"><circle cx="125" cy="128" r="20"/><text x="125" y="128">?</text></g>
+          <g class="node" data-at="0.39"><circle cx="375" cy="100" r="20"/><text x="375" y="100">▢</text></g>
+          <g class="node" data-at="0.62"><circle cx="625" cy="80" r="20"/><text x="625" y="80">&lt;/&gt;</text></g>
+          <g class="node" data-at="0.85"><circle cx="875" cy="112" r="20"/><text x="875" y="112">+</text></g>
+        </svg>
+        <div class="vline" aria-hidden="true"><i></i></div>
+        <ol class="path-steps" style="list-style:none;padding:0;margin-bottom:0">
+          <li class="pstep" data-n="01">
+            <p class="label">Step 01</p>
+            <h3>Understand</h3>
+            <p>We ask about your business before your features: who it serves, how it runs today, what is getting in the way.</p>
+            <span class="out">a written problem statement</span>
+          </li>
+          <li class="pstep" data-n="02">
+            <p class="label">Step 02</p>
+            <h3>Picture</h3>
+            <p>Mock-ups you can point at and click through, with clear options and prices, before anything is built.</p>
+            <span class="out">mock-ups and priced options</span>
+          </li>
+          <li class="pstep" data-n="03">
+            <p class="label">Step 03</p>
             <h3>Build</h3>
-            <p>Make it real, and make it work.</p>
-          </div>
-          <div class="svc">
-            <div><span class="n">04</span><h4>Website development</h4><p>Fast, accessible websites and web apps that are easy for your team to update.</p></div>
-            <div><span class="n">05</span><h4>Mobile app development</h4><p>Apps for iOS and Android, built for the way your customers already use their phones.</p></div>
-            <div><span class="n">06</span><h4>Custom software</h4><p>Internal tools, portals and systems shaped to how your organisation works.</p></div>
-            <div><span class="n">07</span><h4>Deployment</h4><p>Hosting, app store releases and a launch plan, handled carefully and explained clearly.</p></div>
-          </div>
-        </div>
-        <div class="group">
-          <div class="group-name">
+            <p>One senior team designs and engineers what you approved. You can talk to the people building it directly.</p>
+            <span class="out">a working product, deployed</span>
+          </li>
+          <li class="pstep" data-n="04">
+            <p class="label">Step 04</p>
             <h3>Care</h3>
-            <p>Keep it running after launch.</p>
-          </div>
-          <div class="svc">
-            <div><span class="n">08</span><h4>Maintenance and support</h4><p>Updates, fixes and improvements for everything we build, from people who already know the code.</p></div>
+            <p>Launch care is included, and ongoing care is there for everything we build. We stay after the handover.</p>
+            <span class="out">updates, fixes and support</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="band framed-sec" id="framed" style="padding-top:40px">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="label tag">See it before you build it</p>
+        <h2 style="margin-top:20px">Your idea, <span class="hl">framed</span> before it's coded<span class="dot">.</span></h2>
+        <p class="sub" style="margin-top:20px">You see the screens and click through them while changes are still cheap. Only then do we write code.</p>
+        <ul class="ticks">
+          <li><span class="tick" aria-hidden="true"></span>Wireframes in days, not months</li>
+          <li><span class="tick" aria-hidden="true"></span>Click through it like it's real</li>
+          <li><span class="tick" aria-hidden="true"></span>Change it while change is cheap</li>
+        </ul>
+      </div>
+      <div class="blueprint" id="blueprint" aria-hidden="true">
+        <span class="bp-note n1">Day 3</span>
+        <span class="bp-note n2">390 px</span>
+        <span class="bp-note n3">main action</span>
+        <div class="phone-wrap">
+          <div class="brackets"><i></i><i></i><i></i><i></i></div>
+          <div class="phone">
+            <div class="layer wire">
+              <div style="display:flex;justify-content:space-between"><div class="wl" style="width:44%"></div><div class="wl" style="width:14px;height:14px;border-radius:50%"></div></div>
+              <div class="wbox"></div>
+              <div class="wl" style="width:70%"></div>
+              <div class="wl" style="width:46%"></div>
+              <div class="wrow"></div><div class="wrow"></div><div class="wrow"></div>
+              <div class="wl" style="height:30px;border-radius:999px;margin-top:6px"></div>
+            </div>
+            <div class="layer app">
+              <div class="hi">Hi, Meera <i></i></div>
+              <div class="next"><small>NEXT BOOKING</small><b>Pottery, 4 PM</b><span>Studio 2 · 6 seats left</span><br><em>Book seat</em></div>
+              <div class="wk">This week</div>
+              <div class="item"><i></i><div>Music<small>Mon · 5 PM</small></div></div>
+              <div class="item"><i style="background:#FFD6C4"></i><div>Coding club<small>Wed · 6 PM</small></div></div>
+              <div class="item"><i style="background:#D5DAE1"></i><div>Art<small>Sat · 11 AM</small></div></div>
+              <div class="cta">See schedule</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="paper band promises" id="promises" style="padding-top:0">
+  <section class="band services" id="services" style="padding-top:40px">
     <div class="wrap">
-      <div class="head">
-        <p class="label">Working with us</p>
-        <h2>What you can expect from us.</h2>
+      <div class="head reveal">
+        <p class="label tag">What we build</p>
+        <h2>One studio. <span class="hl">End to end</span><span class="dot">.</span></h2>
+        <p class="sub">Eight services, grouped the way a project actually runs. Take the whole path or start where you are.</p>
       </div>
-      <div class="promise-grid">
-        <div class="promise">
-          <q>One product owner, start to finish.</q>
-          <p>You won't be passed between people. One person knows your project and answers for it.</p>
+      <div class="tiles" id="tiles">
+        <div class="tile" style="--i:0"><div class="brackets"><i></i><i></i><i></i><i></i></div><div class="top-row"><span class="n">01</span><span class="grp">Shape</span></div><h3>Digital product consulting</h3><p>Turn an idea or a problem into a clear plan with priorities you can defend.</p></div>
+        <div class="tile" style="--i:1"><div class="brackets"><i></i><i></i><i></i><i></i></div><div class="top-row"><span class="n">02</span><span class="grp">Shape</span></div><h3>Technology consulting</h3><p>Plain-language advice on platforms, tools and costs.</p></div>
+        <div class="tile" style="--i:2"><div class="brackets"><i></i><i></i><i></i><i></i></div><div class="top-row"><span class="n">03</span><span class="grp">Shape</span></div><h3>UI/UX design</h3><p>Flows and screens designed around real users, tested as mock-ups first.</p></div>
+        <div class="tile" style="--i:3"><div class="brackets"><i></i><i></i><i></i><i></i></div><div class="top-row"><span class="n">04</span><span class="grp">Build</span></div><h3>Websites</h3><p>Fast, accessible websites and web apps your team can update.</p></div>
+        <div class="tile" style="--i:4"><div class="brackets"><i></i><i></i><i></i><i></i></div><div class="top-row"><span class="n">05</span><span class="grp">Build</span></div><h3>Mobile apps</h3><p>iOS and Android apps, built for how your customers use their phones.</p></div>
+        <div class="tile" style="--i:5"><div class="brackets"><i></i><i></i><i></i><i></i></div><div class="top-row"><span class="n">06</span><span class="grp">Build</span></div><h3>Custom software</h3><p>Internal tools, portals and systems shaped to how you work.</p></div>
+        <div class="tile" style="--i:6"><div class="brackets"><i></i><i></i><i></i><i></i></div><div class="top-row"><span class="n">07</span><span class="grp">Build</span></div><h3>Deployment</h3><p>Hosting, app store releases and a launch plan, explained clearly.</p></div>
+        <div class="tile" style="--i:7"><div class="brackets"><i></i><i></i><i></i><i></i></div><div class="top-row"><span class="n">08</span><span class="grp">Care</span></div><h3>Maintenance and support</h3><p>Updates, fixes and improvements from people who already know the code.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band ink team" id="team" data-dark>
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="label tag">One team</p>
+        <h2>Five people behind it.<br><span class="mark">One person</span> to call<span class="dot">.</span></h2>
+        <p class="sub">A designer, frontend and backend engineers, a tech lead who guards code quality, and one product owner who answers for your project.</p>
+      </div>
+      <div class="team-diagram" id="team-diagram">
+        <svg class="team-svg" viewBox="0 0 1000 360" aria-hidden="true">
+          <g class="role"><rect x="20" y="20" width="132" height="40" rx="6"/><text x="38" y="40">Product</text></g>
+          <g class="role"><rect x="20" y="90" width="132" height="40" rx="6"/><text x="38" y="110">Design</text></g>
+          <g class="role"><rect x="20" y="160" width="132" height="40" rx="6"/><text x="38" y="180">Frontend</text></g>
+          <g class="role"><rect x="20" y="230" width="132" height="40" rx="6"/><text x="38" y="250">Backend</text></g>
+          <g class="role"><rect x="20" y="300" width="132" height="40" rx="6"/><text x="38" y="320">Tech lead</text></g>
+          <path class="ln" d="M152 40 C 420 40, 520 180, 700 180"/>
+          <path class="ln" d="M152 110 C 420 110, 520 180, 700 180"/>
+          <path class="ln" d="M152 250 C 420 250, 520 180, 700 180"/>
+          <path class="ln" d="M152 320 C 420 320, 520 180, 700 180"/>
+          <path class="ln-hot" style="--len:560" d="M152 180 L 700 180"/>
+          <path class="ln-hot" style="--len:200" d="M700 180 L 838 180"/>
+          <circle class="hub" cx="700" cy="180" r="7"/>
+          <g class="you"><circle cx="880" cy="180" r="42"/><text x="880" y="180">You</text></g>
+          <path class="yb" d="M826 146 v-20 h20 M914 126 h20 v20 M934 214 v20 h-20 M846 234 h-20 v-20"/>
+        </svg>
+        <div class="team-m" aria-hidden="true">
+          <div class="roles"><span>Product</span><span>Design</span><span>Frontend</span><span>Backend</span><span>Tech lead</span></div>
+          <div class="stem"></div>
+          <div class="you"><div class="brackets"><i></i><i></i><i></i><i></i></div>You</div>
         </div>
-        <div class="promise">
-          <q>We'll show you a mock-up first.</q>
-          <p>You see what you're getting before anything is built, while changes are still cheap.</p>
-        </div>
-        <div class="promise">
-          <q>Here's what this costs, and why.</q>
-          <p>Clear options with prices and timelines. When a feature adds weeks, we tell you, and offer a simpler way.</p>
+        <div class="team-chips"><span>No chasing five freelancers</span><span>One plan, start to finish</span><span>Plain-language updates</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band promises" id="promises">
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="label tag">How it feels</p>
+        <h2>No jargon.<br>No <span class="hl">surprises</span><span class="dot">.</span></h2>
+      </div>
+      <div class="p-grid">
+        <ul class="checklist" id="checklist">
+          <li style="--i:0"><span class="tick" aria-hidden="true"></span><span class="what">Scope, written down</span><span class="val">Before code</span></li>
+          <li style="--i:1"><span class="tick" aria-hidden="true"></span><span class="what">A mock-up to react to</span><span class="val">Before building</span></li>
+          <li style="--i:2"><span class="tick" aria-hidden="true"></span><span class="what">Options with prices and timelines</span><span class="val">Up front</span></li>
+          <li style="--i:3"><span class="tick" aria-hidden="true"></span><span class="what">Updates</span><span class="val">Plain language</span></li>
+          <li style="--i:4"><span class="tick" aria-hidden="true"></span><span class="what">A feature that adds weeks</span><span class="val hl">We tell you</span></li>
+        </ul>
+        <div class="plans" id="plans">
+          <h3>Start small, grow when ready</h3>
+          <p>Begin with what you need now. The same team takes you further when you are ready.</p>
+          <div class="plan-row">
+            <div class="plan"><b>Start</b><small>Website</small></div>
+            <div class="plan"><b>Grow</b><small>Web + app</small></div>
+            <div class="plan"><div class="brackets"><i></i><i></i><i></i><i></i></div><b>Scale</b><small>Custom software</small></div>
+          </div>
+          <p class="foot">One studio across all three. Every option is priced before work starts.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="ink contact" id="contact">
+  <section class="contact" id="contact">
     <div class="wrap">
-      <div>
-        <p class="label">Start a conversation</p>
-        <h2>Tell us what you <span class="framed">mean.</span></h2>
-        <p class="lede">Write to us about your business and what's in the way. We'll reply with questions first, then options. No question is too basic.</p>
-      </div>
-      <div class="reach">
-        <div class="reach-row">
-          <div>
-            <span class="label">Email</span>
-            <a class="val" id="email" href="mailto:hello@mokkin.in" data-track="contact" data-method="email">hello@mokkin.in</a>
+      <div class="cta-card ink reveal" data-dark>
+        <div>
+          <p class="label tag">Start here</p>
+          <h2>Have an idea?<br>Let's <span class="hl">frame</span> it<span class="dot">.</span></h2>
+          <p class="sub">Tell us about your business and what is in the way. We'll reply with questions first, then options. No question is too basic.</p>
+          <div class="ctas">
+            <a class="btn btn-signal" href="https://wa.me/918587057678?text=Hi%20Mokkin%2C%20I%27d%20like%20to%20book%20a%20call." target="_blank" rel="noopener" data-book data-track="contact" data-method="book_call" data-location="contact">Book a call <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn-ghost" href="https://wa.me/918587057678?text=Hi%20Mokkin%2C%20I%20have%20an%20idea%20I%27d%20like%20to%20talk%20about." target="_blank" rel="noopener" data-track="contact" data-method="whatsapp">Chat on WhatsApp</a>
           </div>
-          <button class="copy" id="copy-email" type="button" data-track="contact" data-method="email_copy">Copy</button>
-        </div>
-        <div class="reach-row">
-          <div>
-            <span class="label">Instagram</span>
-            <a class="val" href="https://www.instagram.com/mokkin.in/" target="_blank" rel="noopener noreferrer" data-track="contact" data-method="instagram">@mokkin.in</a>
+          <div class="reach">
+            <span class="email-pill"><a href="mailto:hello@mokkin.in" id="email" data-track="contact" data-method="email">hello@mokkin.in</a><button type="button" id="copy-email" data-track="contact" data-method="email_copy">Copy</button></span>
+            <a class="ig" href="https://www.instagram.com/mokkin.in/" target="_blank" rel="noopener" data-track="contact" data-method="instagram">Instagram @mokkin.in ↗</a>
           </div>
-          <a class="copy" href="https://www.instagram.com/mokkin.in/" target="_blank" rel="noopener noreferrer" style="text-decoration:none" data-track="contact" data-method="instagram">Open</a>
         </div>
-        <p class="reach-note">Founders and organisations in any field are welcome.</p>
+        <div class="mini-wrap" aria-hidden="true">
+          <div class="brackets"><i></i><i></i><i></i><i></i></div>
+          <div class="mock s1 s2 s3">
+            <div class="win"><b>Orders</b><span class="lights"><i></i><i></i><i></i></span></div>
+            <div class="body">
+              <div class="m-card m-week"><div><div class="m-k w">This week</div><div class="m-v w">1,284</div></div><div class="m-bars"><i style="height:40%"></i><i style="height:58%"></i><i style="height:46%"></i><i style="height:72%"></i><i style="height:62%"></i><i style="height:86%"></i><i style="height:100%"></i></div></div>
+              <div class="m-rows">
+                <div class="m-row"><i class="av warm"></i><span class="w">Asha R.</span><span class="st paid">Paid</span></div>
+                <div class="m-row"><i class="av"></i><span class="w">Kiran M.</span><span class="st">Packing</span></div>
+                <div class="m-row"><i class="av warm"></i><span class="w">Dev S.</span><span class="st paid">Paid</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 </main>
 
-<footer>
+<footer class="ink" data-dark>
   <div class="wrap">
-    <span class="tag">mokkin · Understood, then built.</span>
-    <span>Shape · Build · Care · © 2026 Mokkin</span>
+    <div class="f-logo framed">mokkin</div>
+    <p class="f-tag">Understood, then <span class="hl">built</span><span class="dot">.</span></p>
+    <div class="f-cols">
+      <div><p class="label">Write to</p><a href="mailto:hello@mokkin.in" data-track="contact" data-method="email">hello@mokkin.in</a></div>
+      <div><p class="label">WhatsApp</p><a href="https://wa.me/918587057678" target="_blank" rel="noopener" data-track="contact" data-method="whatsapp">+91 85870 57678</a></div>
+      <div><p class="label">Instagram</p><a href="https://www.instagram.com/mokkin.in/" target="_blank" rel="noopener" data-track="contact" data-method="instagram">@mokkin.in</a></div>
+      <div><p class="label">Based in</p><p>Bengaluru, India</p></div>
+    </div>
+    <div class="f-base"><span>End-to-end websites, apps and custom software.</span><span>Shape · Build · Care · © 2026 Mokkin</span></div>
   </div>
 </footer>
 
-<script src="/app.js" defer></script>
+<script src="/app.js"></script>
 <script src="/analytics.js" defer></script>
 </body>
 </html>
