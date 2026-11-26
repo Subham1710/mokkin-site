@@ -118,6 +118,63 @@
     });
   }
 
+
+  // ---------- Typing phrase in the hero lede ----------
+  (function () {
+    var el = document.getElementById('rot');
+    if (!el || reduce) return;
+    var words = ['a website', 'a mobile app', 'custom software', 'a working product'];
+    var w = 0, i = words[0].length, del = true;
+    setTimeout(function tick() {
+      var word = words[w];
+      if (del) { i--; if (i <= 0) { del = false; w = (w + 1) % words.length; } }
+      else { i++; if (i >= words[w].length) { del = true; el.textContent = words[w]; return setTimeout(tick, 2200); } }
+      el.textContent = (del ? word : words[w]).slice(0, i);
+      setTimeout(tick, del ? 35 : 70);
+    }, 2600);
+  })();
+
+  // ---------- Tilt the hero mock-up toward the pointer ----------
+  (function () {
+    var wrap = document.getElementById('hero-mock');
+    var fr = wrap && wrap.querySelector('.mock-frame');
+    if (!fr || reduce || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    var heroEl = document.getElementById('hero');
+    heroEl.addEventListener('pointermove', function (e) {
+      var r = fr.getBoundingClientRect();
+      var x = (e.clientX - (r.left + r.width / 2)) / window.innerWidth;
+      var y = (e.clientY - (r.top + r.height / 2)) / window.innerHeight;
+      fr.style.setProperty('--ry', (x * 14).toFixed(2) + 'deg');
+      fr.style.setProperty('--rx', (-y * 10).toFixed(2) + 'deg');
+    });
+    heroEl.addEventListener('pointerleave', function () { fr.style.setProperty('--ry', '0deg'); fr.style.setProperty('--rx', '0deg'); });
+  })();
+
+  // ---------- Count-up numbers ----------
+  (function () {
+    var box = document.getElementById('stats');
+    if (!box) return;
+    var nums = Array.prototype.slice.call(box.querySelectorAll('.count'));
+    var run = function () {
+      box.classList.add('in');
+      if (reduce) return;
+      nums.forEach(function (n) {
+        var to = +n.getAttribute('data-to'), from = to > 1 ? 0 : 9, t0 = null;
+        var step = function (ts) {
+          if (!t0) t0 = ts;
+          var p = Math.min(1, (ts - t0) / 1400), e = 1 - Math.pow(1 - p, 3);
+          n.textContent = Math.round(from + (to - from) * e);
+          if (p < 1) requestAnimationFrame(step);
+        };
+        n.textContent = from;
+        requestAnimationFrame(step);
+      });
+    };
+    if (!('IntersectionObserver' in window)) return run();
+    var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { run(); io.disconnect(); } }, { rootMargin: '0px 0px -15% 0px' });
+    io.observe(box);
+  })();
+
   // ---------- Scroll loop ----------
   var ticking = false;
   function frameFn() {
