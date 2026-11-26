@@ -209,7 +209,9 @@ section { scroll-margin-top: 84px; }
 .journey.live .j-intro, .journey.live .j-list { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); padding: 0; }
 .journey.live .j-stage { display: block; position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: radial-gradient(60% 50% at 50% 38%, rgba(255,90,31,.10), transparent 70%); }
 .j-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
-.j-label { position: absolute; top: 104px; left: 0; right: 0; }
+.j-label { position: absolute; top: 104px; left: 0; right: 0; display: flex; align-items: center; gap: 16px; }
+.j-tagline { font-size: 15px; color: var(--mist); }
+@media (max-width: 720px) { .j-tagline { display: none; } }
 .j-text { position: absolute; left: 0; right: 0; bottom: max(150px, 17vh); text-align: center; padding: 0 16px; transition: opacity .18s, transform .18s var(--ease); }
 .j-text.swap { opacity: 0; transform: translateY(10px); }
 .j-num { font-size: clamp(64px, 10vw, 128px); font-weight: 700; letter-spacing: -0.05em; line-height: .9; color: var(--signal); text-shadow: 0 0 40px rgba(255,90,31,.35); }
@@ -217,7 +219,7 @@ section { scroll-margin-top: 84px; }
 .j-line { margin: 18px auto 0; max-width: 34em; font-size: clamp(16px, 1.5vw, 20px); color: var(--fog); }
 .j-bar { position: absolute; left: 0; right: 0; bottom: 26px; }
 .j-meta { display: flex; align-items: baseline; gap: 12px; font-size: 15px; color: var(--paper); }
-.j-meta .label { color: var(--mist); }
+.j-meta .label { color: var(--signal); }
 .j-cur-n { font-family: var(--mono); color: var(--signal); font-weight: 500; }
 .j-pct-wrap { margin-left: auto; font-weight: 600; font-variant-numeric: tabular-nums; }
 .j-track { position: relative; height: 3px; margin: 22px 9px 0; background: #2A3547; border-radius: 3px; }
@@ -466,7 +468,7 @@ footer { padding-block: 96px 40px; }
             <a class="link" href="#how" data-track="cta" data-location="hero">See how we work <span class="arrow" aria-hidden="true">↓</span></a>
           </div>
           <ul class="chips">
-            <li><span class="chip-ico" aria-hidden="true"><span class="framed"></span></span>One point<br>of contact</li>
+            <li><span class="chip-ico" aria-hidden="true"><span class="framed"></span></span>One product<br>owner</li>
             <li><span class="chip-ico" aria-hidden="true"><span class="framed"></span></span>See it<br>before code</li>
             <li><span class="chip-ico" aria-hidden="true"><span class="framed"></span></span>Care after<br>launch</li>
           </ul>
@@ -507,10 +509,10 @@ footer { padding-block: 96px 40px; }
 
   <section class="stats" id="stats" aria-label="Mokkin in numbers">
     <div class="wrap">
-      <div class="stat"><b><span class="count" data-to="4">4</span></b><i></i><span>steps from idea to launch</span></div>
-      <div class="stat"><b><span class="count" data-to="8">8</span></b><i></i><span>services under one roof</span></div>
-      <div class="stat"><b><span class="count" data-to="5">5</span></b><i></i><span>specialists on your project</span></div>
-      <div class="stat"><b><span class="count" data-to="1">1</span></b><i></i><span>person to call</span></div>
+      <div class="stat"><b><span class="count" data-to="1">1</span></b><i></i><span>product owner, start to finish</span></div>
+      <div class="stat"><b><span class="count" data-to="3">3</span></b><i></i><span>stages: shape, build, care</span></div>
+      <div class="stat"><b><span class="count" data-to="8">8</span></b><i></i><span>services, one senior team</span></div>
+      <div class="stat"><b><span class="count" data-to="60">60</span></b><i></i><span>days of launch care included</span></div>
     </div>
   </section>
   <div class="ticker" aria-label="What we do"><div class="ticker-track"><span>Product consulting</span><span>UI/UX design</span><span>Websites</span><span>Mobile apps</span><span>Custom software</span><span>Deployment</span><span>Maintenance</span><span>Support</span><span aria-hidden="true">Product consulting</span><span aria-hidden="true">UI/UX design</span><span aria-hidden="true">Websites</span><span aria-hidden="true">Mobile apps</span><span aria-hidden="true">Custom software</span><span aria-hidden="true">Deployment</span><span aria-hidden="true">Maintenance</span><span aria-hidden="true">Support</span></div></div>
@@ -525,25 +527,26 @@ footer { padding-block: 96px 40px; }
   <section class="journey ink" id="how" data-dark style="--n:7">
     <div class="wrap j-intro">
       <p class="label tag">How we work</p>
-      <h2>7 steps. One person with you the whole way<span class="dot">.</span></h2>
+      <h2>See it before you build it<span class="dot">.</span></h2>
+      <p class="sub" style="margin-top:18px">Shape, build, care. One product owner from the first conversation to launch, and after it.</p>
     </div>
     <div class="wrap j-list">
       <ol class="j-steps">
-          <li class="j-step" data-title="Listen" data-line="We ask about your business before your features: who it serves, how it runs today, and what is getting in the way."><b>01</b><h3>Listen</h3><p>We ask about your business before your features: who it serves, how it runs today, and what is getting in the way.</p></li>
-          <li class="j-step" data-title="Write it down" data-line="A plain-language problem statement, agreed with you before any design or code."><b>02</b><h3>Write it down</h3><p>A plain-language problem statement, agreed with you before any design or code.</p></li>
-          <li class="j-step" data-title="Picture it" data-line="Mock-ups you can point at and click through, while changes are still cheap."><b>03</b><h3>Picture it</h3><p>Mock-ups you can point at and click through, while changes are still cheap.</p></li>
-          <li class="j-step" data-title="Choose" data-line="Clear options with prices and timelines. When a feature adds weeks, we tell you, and offer a simpler way."><b>04</b><h3>Choose</h3><p>Clear options with prices and timelines. When a feature adds weeks, we tell you, and offer a simpler way.</p></li>
-          <li class="j-step" data-title="Build" data-line="One senior team designs and engineers what you approved. You can talk to the people building it."><b>05</b><h3>Build</h3><p>One senior team designs and engineers what you approved. You can talk to the people building it.</p></li>
-          <li class="j-step" data-title="Launch" data-line="Hosting, app store releases and a launch plan, handled carefully and explained clearly."><b>06</b><h3>Launch</h3><p>Hosting, app store releases and a launch plan, handled carefully and explained clearly.</p></li>
-          <li class="j-step" data-title="Care" data-line="Launch care is included. Updates and fixes come from people who already know the code."><b>07</b><h3>Care</h3><p>Launch care is included. Updates and fixes come from people who already know the code.</p></li>
+          <li class="j-step" data-phase="Shape" data-title="We ask first." data-line="Questions about your business come before talk of features. No question is too basic."><b>01 · Shape</b><h3>We ask first.</h3><p>Questions about your business come before talk of features. No question is too basic.</p></li>
+          <li class="j-step" data-phase="Shape" data-title="We write it down." data-line="A problem statement in plain language. You agree it before anything is designed."><b>02 · Shape</b><h3>We write it down.</h3><p>A problem statement in plain language. You agree it before anything is designed.</p></li>
+          <li class="j-step" data-phase="Shape" data-title="You see it." data-line="A mock-up you can point at and react to. Change your mind while change is cheap."><b>03 · Shape</b><h3>You see it.</h3><p>A mock-up you can point at and react to. Change your mind while change is cheap.</p></li>
+          <li class="j-step" data-phase="Shape" data-title="You choose." data-line="Clear options with clear prices. We recommend one, tell you why, and leave the decision with you."><b>04 · Shape</b><h3>You choose.</h3><p>Clear options with clear prices. We recommend one, tell you why, and leave the decision with you.</p></li>
+          <li class="j-step" data-phase="Build" data-title="We build it." data-line="One senior team designs and engineers exactly what you saw. You can talk to them directly."><b>05 · Build</b><h3>We build it.</h3><p>One senior team designs and engineers exactly what you saw. You can talk to them directly.</p></li>
+          <li class="j-step" data-phase="Build" data-title="We launch it." data-line="Hosting, app store release and a launch plan, explained in plain words. No surprises, because you saw it first."><b>06 · Build</b><h3>We launch it.</h3><p>Hosting, app store release and a launch plan, explained in plain words. No surprises, because you saw it first.</p></li>
+          <li class="j-step" data-phase="Care" data-title="We take care of it." data-line="Launch care: 60 days of hands-on support included. After that, ongoing care for everything we built."><b>07 · Care</b><h3>We take care of it.</h3><p>Launch care: 60 days of hands-on support included. After that, ongoing care for everything we built.</p></li>
       </ol>
     </div>
     <div class="j-stage">
       <canvas class="j-canvas" aria-hidden="true"></canvas>
-      <div class="wrap j-label"><p class="label tag">How we work</p></div>
-      <div class="j-text" aria-hidden="true"><div class="j-num">01</div><h3 class="j-title">Listen</h3><p class="j-line">We ask about your business before your features: who it serves, how it runs today, and what is getting in the way.</p></div>
+      <div class="wrap j-label"><p class="label tag">How we work</p><p class="j-tagline">See it before you build it.</p></div>
+      <div class="j-text" aria-hidden="true"><div class="j-num">01</div><h3 class="j-title">We ask first.</h3><p class="j-line">Questions about your business come before talk of features. No question is too basic.</p></div>
       <div class="wrap j-bar">
-        <div class="j-meta" aria-hidden="true"><span class="label">Project progress</span><b class="j-cur-n">01</b><span class="j-cur-name">Listen</span><span class="j-pct-wrap"><span class="j-pct">0</span>%</span></div>
+        <div class="j-meta" aria-hidden="true"><span class="label j-phase">Shape</span><b class="j-cur-n">01</b><span class="j-cur-name">We ask first.</span><span class="j-pct-wrap"><span class="j-pct">0</span>%</span></div>
         <div class="j-track"><div class="j-fill"></div><div class="j-nodes"></div></div>
         <p class="j-hint">Tap any step to jump to it</p>
       </div>
