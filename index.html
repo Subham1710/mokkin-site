@@ -195,33 +195,47 @@ section { scroll-margin-top: 84px; }
 .why .after { margin-top: 30px; font-size: 19px; color: var(--graphite); opacity: 0; transform: translateY(8px); transition: opacity .6s, transform .6s var(--ease); }
 .why.done .after { opacity: 1; transform: none; }
 
-/* ---------- Process path ---------- */
-.how .head, .head { display: grid; gap: 18px; max-width: 760px; }
-.path-box { position: relative; margin-top: 72px; }
-.path-svg { width: 100%; height: auto; overflow: visible; }
-.path-svg .base { fill: none; stroke: var(--rule); stroke-width: 2; stroke-dasharray: 2 8; stroke-linecap: round; }
-.path-svg .draw { fill: none; stroke: var(--signal); stroke-width: 4; stroke-linecap: round; }
-.path-svg .node circle { fill: var(--white); stroke: var(--rule); stroke-width: 2; transition: fill .35s, stroke .35s, r .35s var(--ease); }
-.path-svg .node text { font-family: var(--mono); font-size: 15px; font-weight: 500; fill: var(--mist); text-anchor: middle; dominant-baseline: central; transition: fill .35s; }
-.path-svg .node.on circle { fill: var(--signal); stroke: var(--signal); }
-.path-svg .node.on text { fill: var(--white); }
-.path-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: 28px; }
-.pstep { opacity: .45; transform: translateY(6px); transition: opacity .45s, transform .45s var(--ease); }
-.pstep.on { opacity: 1; transform: none; }
-.pstep .label { color: var(--ember); }
-.pstep h3 { margin-top: 8px; }
-.pstep p { margin-top: 8px; font-size: 16px; color: var(--graphite); }
-.pstep .out { margin-top: 14px; font-family: var(--mono); font-size: 13px; letter-spacing: .04em; color: var(--ink); display: inline-block; padding: 4px 8px; border: 1px solid var(--rule); border-radius: 3px; background: var(--white); }
-.vline { display: none; }
-@media (max-width: 860px) {
-  .path-svg { display: none; }
-  .path-box { margin-top: 48px; padding-left: 44px; }
-  .vline { display: block; position: absolute; left: 13px; top: 6px; bottom: 6px; width: 3px; background: var(--rule); border-radius: 3px; }
-  .vline i { display: block; width: 100%; height: 0; background: var(--signal); border-radius: 3px; }
-  .path-steps { grid-template-columns: minmax(0, 1fr); gap: 40px; margin-top: 0; }
-  .pstep { position: relative; }
-  .pstep::before { content: attr(data-n); position: absolute; left: -44px; top: -2px; width: 29px; height: 29px; border-radius: 50%; background: var(--white); border: 2px solid var(--rule); font-family: var(--mono); font-size: 12px; display: grid; place-items: center; color: var(--mist); transition: background-color .35s, border-color .35s, color .35s; }
-  .pstep.on::before { background: var(--signal); border-color: var(--signal); color: var(--white); }
+/* ---------- How we work: a pinned, full-screen journey ---------- */
+.journey { position: relative; }
+.j-stage { display: none; }
+.j-steps { list-style: none; margin: 0; padding: 0 0 8px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px 28px; }
+.journey .j-intro { padding-block: 104px 48px; }
+.journey .j-intro h2 { margin-top: 20px; }
+.journey .j-list { padding-bottom: 104px; }
+.j-steps li b { font-family: var(--mono); font-size: 13px; color: var(--signal); }
+.j-steps li h3 { margin-top: 8px; color: var(--paper); }
+.j-steps li p { margin-top: 8px; color: var(--fog); font-size: 16px; }
+.journey.live { height: calc(var(--n, 7) * 85vh + 100vh); }
+.journey.live .j-intro, .journey.live .j-list { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); padding: 0; }
+.journey.live .j-stage { display: block; position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: radial-gradient(60% 50% at 50% 38%, rgba(255,90,31,.10), transparent 70%); }
+.j-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.j-label { position: absolute; top: 104px; left: 0; right: 0; }
+.j-text { position: absolute; left: 0; right: 0; bottom: max(150px, 17vh); text-align: center; padding: 0 16px; transition: opacity .18s, transform .18s var(--ease); }
+.j-text.swap { opacity: 0; transform: translateY(10px); }
+.j-num { font-size: clamp(64px, 10vw, 128px); font-weight: 700; letter-spacing: -0.05em; line-height: .9; color: var(--signal); text-shadow: 0 0 40px rgba(255,90,31,.35); }
+.j-title { margin-top: 6px; font-size: clamp(38px, 6.4vw, 84px); line-height: 1.02; letter-spacing: -0.04em; color: var(--white); }
+.j-line { margin: 18px auto 0; max-width: 34em; font-size: clamp(16px, 1.5vw, 20px); color: var(--fog); }
+.j-bar { position: absolute; left: 0; right: 0; bottom: 26px; }
+.j-meta { display: flex; align-items: baseline; gap: 12px; font-size: 15px; color: var(--paper); }
+.j-meta .label { color: var(--mist); }
+.j-cur-n { font-family: var(--mono); color: var(--signal); font-weight: 500; }
+.j-pct-wrap { margin-left: auto; font-weight: 600; font-variant-numeric: tabular-nums; }
+.j-track { position: relative; height: 3px; margin: 22px 9px 0; background: #2A3547; border-radius: 3px; }
+.j-fill { position: absolute; left: 0; top: 0; bottom: 0; width: 0; border-radius: 3px; background: linear-gradient(90deg, var(--fog), var(--signal)); box-shadow: 0 0 12px rgba(255,90,31,.6); }
+.j-nodes { position: absolute; inset: 0; }
+.j-node { position: absolute; top: 50%; width: 30px; height: 30px; margin: -15px 0 0 -15px; padding: 0; border: 0; background: transparent; cursor: pointer; display: grid; place-items: center; }
+.j-node::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #3A475B; transition: background-color .3s, transform .3s var(--ease), box-shadow .3s; }
+.j-node.done::before { background: var(--signal); }
+.j-node.cur::before { width: 16px; height: 16px; background: var(--signal); box-shadow: 0 0 0 6px rgba(255,90,31,.2), 0 0 22px rgba(255,90,31,.8); }
+.j-node span { position: absolute; bottom: 26px; font-family: var(--mono); font-size: 12px; color: var(--mist); opacity: 0; transition: opacity .3s; }
+.j-node.cur span, .j-node:hover span, .j-node:focus-visible span { opacity: 1; color: var(--paper); }
+.j-hint { margin-top: 14px; text-align: center; font-size: 13px; color: var(--mist); }
+@media (max-width: 720px) {
+  .j-label { top: 92px; }
+  .j-text { bottom: 132px; }
+  .j-meta { font-size: 14px; flex-wrap: wrap; row-gap: 2px; }
+  .j-meta .label { width: 100%; }
+  .j-hint { display: none; }
 }
 
 /* ---------- Services ---------- */
@@ -508,49 +522,30 @@ footer { padding-block: 96px 40px; }
     </div>
   </section>
 
-  <section class="band how" id="how" style="padding-top:40px">
-    <div class="wrap">
-      <div class="head reveal">
-        <p class="label tag">How we work</p>
-        <h2>Four steps from idea to <span class="hl">shipped</span><span class="dot">.</span></h2>
-        <p class="sub">A simple route, the same way every time. One product owner stays with you from the first conversation to launch, and after it.</p>
-      </div>
-      <div class="path-box" id="path">
-        <svg class="path-svg" viewBox="0 0 1000 170" aria-hidden="true">
-          <path class="base" d="M -40 120 C 40 120, 70 128, 125 128 S 260 100, 375 100 S 520 80, 625 80 S 780 112, 875 112 S 980 104, 1040 98"/>
-          <path class="draw" d="M -40 120 C 40 120, 70 128, 125 128 S 260 100, 375 100 S 520 80, 625 80 S 780 112, 875 112 S 980 104, 1040 98"/>
-          <g class="node" data-at="0.16"><circle cx="125" cy="128" r="20"/><text x="125" y="128">?</text></g>
-          <g class="node" data-at="0.39"><circle cx="375" cy="100" r="20"/><text x="375" y="100">▢</text></g>
-          <g class="node" data-at="0.62"><circle cx="625" cy="80" r="20"/><text x="625" y="80">&lt;/&gt;</text></g>
-          <g class="node" data-at="0.85"><circle cx="875" cy="112" r="20"/><text x="875" y="112">+</text></g>
-        </svg>
-        <div class="vline" aria-hidden="true"><i></i></div>
-        <ol class="path-steps" style="list-style:none;padding:0;margin-bottom:0">
-          <li class="pstep" data-n="01">
-            <p class="label">Step 01</p>
-            <h3>Understand</h3>
-            <p>We ask about your business before your features: who it serves, how it runs today, what is getting in the way.</p>
-            <span class="out">a written problem statement</span>
-          </li>
-          <li class="pstep" data-n="02">
-            <p class="label">Step 02</p>
-            <h3>Picture</h3>
-            <p>Mock-ups you can point at and click through, with clear options and prices, before anything is built.</p>
-            <span class="out">mock-ups and priced options</span>
-          </li>
-          <li class="pstep" data-n="03">
-            <p class="label">Step 03</p>
-            <h3>Build</h3>
-            <p>One senior team designs and engineers what you approved. You can talk to the people building it directly.</p>
-            <span class="out">a working product, deployed</span>
-          </li>
-          <li class="pstep" data-n="04">
-            <p class="label">Step 04</p>
-            <h3>Care</h3>
-            <p>Launch care is included, and ongoing care is there for everything we build. We stay after the handover.</p>
-            <span class="out">updates, fixes and support</span>
-          </li>
-        </ol>
+  <section class="journey ink" id="how" data-dark style="--n:7">
+    <div class="wrap j-intro">
+      <p class="label tag">How we work</p>
+      <h2>7 steps. One person with you the whole way<span class="dot">.</span></h2>
+    </div>
+    <div class="wrap j-list">
+      <ol class="j-steps">
+          <li class="j-step" data-title="Listen" data-line="We ask about your business before your features: who it serves, how it runs today, and what is getting in the way."><b>01</b><h3>Listen</h3><p>We ask about your business before your features: who it serves, how it runs today, and what is getting in the way.</p></li>
+          <li class="j-step" data-title="Write it down" data-line="A plain-language problem statement, agreed with you before any design or code."><b>02</b><h3>Write it down</h3><p>A plain-language problem statement, agreed with you before any design or code.</p></li>
+          <li class="j-step" data-title="Picture it" data-line="Mock-ups you can point at and click through, while changes are still cheap."><b>03</b><h3>Picture it</h3><p>Mock-ups you can point at and click through, while changes are still cheap.</p></li>
+          <li class="j-step" data-title="Choose" data-line="Clear options with prices and timelines. When a feature adds weeks, we tell you, and offer a simpler way."><b>04</b><h3>Choose</h3><p>Clear options with prices and timelines. When a feature adds weeks, we tell you, and offer a simpler way.</p></li>
+          <li class="j-step" data-title="Build" data-line="One senior team designs and engineers what you approved. You can talk to the people building it."><b>05</b><h3>Build</h3><p>One senior team designs and engineers what you approved. You can talk to the people building it.</p></li>
+          <li class="j-step" data-title="Launch" data-line="Hosting, app store releases and a launch plan, handled carefully and explained clearly."><b>06</b><h3>Launch</h3><p>Hosting, app store releases and a launch plan, handled carefully and explained clearly.</p></li>
+          <li class="j-step" data-title="Care" data-line="Launch care is included. Updates and fixes come from people who already know the code."><b>07</b><h3>Care</h3><p>Launch care is included. Updates and fixes come from people who already know the code.</p></li>
+      </ol>
+    </div>
+    <div class="j-stage">
+      <canvas class="j-canvas" aria-hidden="true"></canvas>
+      <div class="wrap j-label"><p class="label tag">How we work</p></div>
+      <div class="j-text" aria-hidden="true"><div class="j-num">01</div><h3 class="j-title">Listen</h3><p class="j-line">We ask about your business before your features: who it serves, how it runs today, and what is getting in the way.</p></div>
+      <div class="wrap j-bar">
+        <div class="j-meta" aria-hidden="true"><span class="label">Project progress</span><b class="j-cur-n">01</b><span class="j-cur-name">Listen</span><span class="j-pct-wrap"><span class="j-pct">0</span>%</span></div>
+        <div class="j-track"><div class="j-fill"></div><div class="j-nodes"></div></div>
+        <p class="j-hint">Tap any step to jump to it</p>
       </div>
     </div>
   </section>
@@ -713,6 +708,7 @@ footer { padding-block: 96px 40px; }
 </footer>
 
 <script src="/app.js"></script>
+<script src="/journey.js" defer></script>
 <script src="/analytics.js" defer></script>
 </body>
 </html>
