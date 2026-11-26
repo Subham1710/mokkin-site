@@ -14,6 +14,7 @@
   var textBox = sec.querySelector('.j-text');
   var fill = sec.querySelector('.j-fill'), pct = sec.querySelector('.j-pct');
   var curNum = sec.querySelector('.j-cur-n'), curName = sec.querySelector('.j-cur-name');
+  var phaseEl = sec.querySelector('.j-phase');
   var nodesBox = sec.querySelector('.j-nodes');
   var canvas = sec.querySelector('.j-canvas'), ctx = canvas.getContext('2d');
 
@@ -126,6 +127,7 @@
       lineEl.textContent = st.getAttribute('data-line');
       curNum.textContent = String(i + 1).padStart(2, '0');
       curName.textContent = st.getAttribute('data-title');
+      if (phaseEl) phaseEl.textContent = st.getAttribute('data-phase');
       textBox.classList.remove('swap');
     }, shown === -1 ? 0 : 180);
     nodes.forEach(function (n, k) { n.classList.toggle('done', k < i); n.classList.toggle('cur', k === i); });
