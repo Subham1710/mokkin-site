@@ -215,13 +215,17 @@ section { scroll-margin-top: 84px; }
 .j-label { position: absolute; top: 104px; left: 0; right: 0; display: flex; align-items: center; gap: 16px; }
 .j-tagline { font-size: 15px; color: var(--mist); }
 .j-text { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-46%); pointer-events: none; }
-.j-copy { max-width: min(560px, 44%); transition: opacity .3s var(--ease), transform .3s var(--ease), filter .3s; }
-.j-text.out .j-copy { opacity: 0; transform: translateY(-14px); filter: blur(6px); }
+.j-copy { max-width: min(560px, 44%); }
+.j-kick, .j-title, .j-line { transition: opacity .3s var(--ease), transform .3s var(--ease), filter .3s; }
+.j-text.out .j-kick, .j-text.out .j-title, .j-text.out .j-line { opacity: 0; transform: translateY(-14px); filter: blur(6px); }
 .j-kick { display: flex; align-items: center; gap: 12px; font-family: var(--mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--signal); }
 .j-kick::before { content: ""; width: 36px; height: 1px; background: linear-gradient(90deg, transparent, var(--signal)); }
 .j-of { color: var(--mist); }
 .j-num { display: block; margin-top: 14px; font-size: clamp(88px, 11vw, 168px); font-weight: 700; letter-spacing: -0.06em; line-height: .86; }
-.j-num .m > span { background: linear-gradient(180deg, #FFB08F 0%, var(--signal) 45%, var(--ember) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.j-dig { display: inline-block; height: .86em; overflow: hidden; vertical-align: top; }
+.j-strip { display: block; will-change: transform; }
+.j-strip > span { display: block; height: .86em; }
+.j-z, .j-strip > span { background: linear-gradient(180deg, #FFB08F 0%, var(--signal) 45%, var(--ember) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .j-title { margin-top: 18px; font-size: clamp(40px, 4.6vw, 72px); line-height: 1.02; letter-spacing: -0.04em; color: var(--white); }
 .j-line { margin-top: 20px; max-width: 30em; font-size: clamp(16px, 1.35vw, 19px); line-height: 1.6; color: var(--fog); }
 .m { display: inline-block; overflow: hidden; vertical-align: bottom; padding: 0 .02em .1em; margin-bottom: -.1em; }
