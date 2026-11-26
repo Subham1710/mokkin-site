@@ -356,6 +356,19 @@ section { scroll-margin-top: 84px; }
 .plans.in .plan .brackets i { opacity: 1; transform: none; transition-delay: .8s; }
 .plans .foot { margin-top: 16px; font-size: 14.5px; color: var(--graphite); }
 
+
+/* ---------- Testimonials (client-approved quotes only) ---------- */
+.voice-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 56px; }
+@media (max-width: 900px) { .voice-grid { grid-template-columns: minmax(0, 1fr); } }
+.voice { margin: 0; position: relative; background: var(--white); border: 1px solid var(--rule); border-radius: 10px; padding: 30px 26px 24px; display: flex; flex-direction: column; gap: 26px; transition: transform .25s var(--ease), box-shadow .25s; }
+.voice:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(14,23,38,.08); }
+.voice .mark { font-size: 54px; line-height: .5; height: 22px; color: var(--signal); font-weight: 600; }
+.voice blockquote { margin: 0; font-size: 18.5px; line-height: 1.5; letter-spacing: -0.01em; color: var(--ink); }
+.voice figcaption { line-height: 1.35; margin-top: auto; display: flex; align-items: center; gap: 14px; padding-top: 20px; border-top: 1px solid var(--rule); }
+.voice .av { flex: none; width: 44px; height: 44px; border-radius: 50%; background: var(--ink); color: var(--paper); display: grid; place-items: center; font-weight: 600; }
+.voice .who { font-weight: 600; font-size: 16px; line-height: 1.3; }
+.voice .what { font-size: 14px; color: var(--graphite); line-height: 1.4; }
+
 /* ---------- Contact card ---------- */
 .contact { padding-block: 40px 120px; }
 @media (max-width: 720px) { .contact { padding-block: 16px 72px; } }
@@ -643,6 +656,32 @@ footer { padding-block: 96px 40px; }
           </div>
           <p class="foot">One studio across all three. Every option is priced before work starts.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band voices" id="clients" style="padding-top:0">
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="label tag">In their words</p>
+        <h2>Ask the people we've <span class="hl">built</span> for<span class="dot">.</span></h2>
+      </div>
+      <div class="voice-grid reveal">
+        <figure class="voice">
+          <div class="mark" aria-hidden="true">&ldquo;</div>
+          <blockquote>Mokkin asked about our students and schools before they ever talked about logos. The brand they made feels like us, and every step came with a clear plan and price.</blockquote>
+          <figcaption><span class="av" aria-hidden="true">M</span><span><span class="who">Monia</span><br><span class="what">Founder, school enrichment programme, Bengaluru</span></span></figcaption>
+        </figure>
+        <figure class="voice">
+          <div class="mark" aria-hidden="true">&ldquo;</div>
+          <blockquote>We wanted a website that explains group buying without a wall of text. Mokkin turned it into a story you scroll through, showed us mock-ups first, and built exactly what we signed off on.</blockquote>
+          <figcaption><span class="av" aria-hidden="true">V</span><span><span class="who">Vaibhaw</span><br><span class="what">Founder, community group-buying platform</span></span></figcaption>
+        </figure>
+        <figure class="voice">
+          <div class="mark" aria-hidden="true">&ldquo;</div>
+          <blockquote>I wanted one person who would take care of everything, and that is what I got. Mokkin questioned our plan before building anything, then delivered our website and app, and stayed on after launch.</blockquote>
+          <figcaption><span class="av" aria-hidden="true">S</span><span><span class="who">Shweta</span><br><span class="what">Founder, kids' activity space, Bengaluru</span></span></figcaption>
+        </figure>
       </div>
     </div>
   </section>
