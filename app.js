@@ -40,7 +40,6 @@
   once($$('.reveal'), 'in');
   once($$('#tiles, #checklist, #plans'), 'in', '0px 0px -18% 0px');
   once($$('#team-diagram'), 'on', '0px 0px -25% 0px');
-  once($$('#blueprint'), 'on', '0px 0px -35% 0px');
 
   // ---------- Header: active section + dark mode over ink bands ----------
   var top = $('#top');
