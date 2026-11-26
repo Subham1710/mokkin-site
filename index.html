@@ -224,46 +224,6 @@ section { scroll-margin-top: 84px; }
   .pstep.on::before { background: var(--signal); border-color: var(--signal); color: var(--white); }
 }
 
-/* ---------- Framed before it's coded ---------- */
-.framed-sec .wrap { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 64px; align-items: center; }
-@media (max-width: 900px) { .framed-sec .wrap { grid-template-columns: minmax(0, 1fr); gap: 48px; } }
-.ticks { list-style: none; padding: 0; margin: 32px 0 0; display: grid; gap: 14px; }
-.ticks li { display: flex; gap: 12px; align-items: center; font-size: 17px; }
-.tick { flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--blush); position: relative; }
-.tick::after { content: ""; position: absolute; left: 7px; top: 4px; width: 6px; height: 10px; border: solid var(--ember); border-width: 0 2px 2px 0; transform: rotate(45deg); }
-.blueprint { position: relative; border-radius: 14px; background-color: var(--ink); background-image: linear-gradient(rgba(213,218,225,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(213,218,225,.07) 1px, transparent 1px); background-size: 28px 28px; padding: 44px 24px; display: grid; place-items: center; min-height: 520px; overflow: hidden; }
-.bp-note { position: absolute; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--signal); }
-.bp-note.n1 { top: 18px; right: 18px; background: var(--white); color: var(--ink); padding: 3px 9px; border-radius: 999px; }
-.bp-note.n1::before { content: "● "; color: var(--signal); }
-.bp-note.n2 { left: 18px; top: 46%; writing-mode: vertical-rl; transform: rotate(180deg); }
-.bp-note.n3 { right: 18px; bottom: 22%; }
-.phone-wrap { position: relative; }
-.phone { position: relative; width: 236px; height: 440px; border-radius: 30px; background: var(--white); padding: 14px; box-shadow: 0 0 0 6px #1F2A3C; overflow: hidden; }
-.phone .layer { position: absolute; inset: 14px; transition: opacity .6s var(--ease), transform .6s var(--ease); }
-.phone .wire { display: grid; gap: 10px; align-content: start; }
-.wire .wl { height: 10px; border: 1.5px solid #8A93A0; border-radius: 3px; }
-.wire .wbox { height: 120px; border: 1.5px solid #8A93A0; border-radius: 6px; position: relative; overflow: hidden; }
-.wire .wbox::before, .wire .wbox::after { content: ""; position: absolute; left: 50%; top: 50%; width: 140%; height: 1.5px; background: #8A93A0; transform: translate(-50%, -50%) rotate(31deg); }
-.wire .wbox::after { transform: translate(-50%, -50%) rotate(-31deg); }
-.wire .wrow { height: 34px; border: 1.5px solid #8A93A0; border-radius: 6px; display: flex; align-items: center; padding-left: 10px; }
-.wire .wrow::before { content: ""; width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid #8A93A0; }
-.phone .app { opacity: 0; transform: translateY(14px); display: grid; gap: 10px; align-content: start; font-size: 13px; }
-.app .hi { display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 15px; }
-.app .hi i { width: 16px; height: 16px; border-radius: 50%; background: var(--signal); }
-.app .next { background: var(--ink); color: var(--paper); border-radius: 12px; padding: 14px; }
-.app .next small { font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em; color: var(--mist); }
-.app .next b { display: block; font-size: 18px; letter-spacing: -0.02em; margin-top: 4px; }
-.app .next span { font-size: 11px; color: var(--mist); }
-.app .next em { display: inline-block; margin-top: 10px; font-style: normal; font-size: 11px; font-weight: 600; background: var(--signal); color: var(--ink); padding: 4px 10px; border-radius: 999px; }
-.app .wk { font-weight: 600; margin-top: 4px; }
-.app .item { display: flex; align-items: center; gap: 10px; background: #F4F6F8; border-radius: 10px; padding: 9px 10px; }
-.app .item i { width: 18px; height: 18px; border-radius: 50%; background: #F6B9A1; }
-.app .item small { display: block; color: var(--graphite); font-size: 10.5px; }
-.app .cta { margin-top: 4px; text-align: center; background: var(--ink); color: var(--paper); border-radius: 999px; padding: 9px; font-weight: 600; }
-.blueprint.on .wire { opacity: 0; transform: translateY(-10px); }
-.blueprint.on .app { opacity: 1; transform: none; }
-.phone-wrap .brackets { inset: -16px; }
-
 /* ---------- Services ---------- */
 .tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 56px; }
 @media (max-width: 960px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -532,48 +492,6 @@ footer { padding-block: 96px 40px; }
             <span class="out">updates, fixes and support</span>
           </li>
         </ol>
-      </div>
-    </div>
-  </section>
-
-  <section class="band framed-sec" id="framed" style="padding-top:40px">
-    <div class="wrap">
-      <div class="reveal">
-        <p class="label tag">See it before you build it</p>
-        <h2 style="margin-top:20px">Your idea, <span class="hl">framed</span> before it's coded<span class="dot">.</span></h2>
-        <p class="sub" style="margin-top:20px">You see the screens and click through them while changes are still cheap. Only then do we write code.</p>
-        <ul class="ticks">
-          <li><span class="tick" aria-hidden="true"></span>Wireframes in days, not months</li>
-          <li><span class="tick" aria-hidden="true"></span>Click through it like it's real</li>
-          <li><span class="tick" aria-hidden="true"></span>Change it while change is cheap</li>
-        </ul>
-      </div>
-      <div class="blueprint" id="blueprint" aria-hidden="true">
-        <span class="bp-note n1">Day 3</span>
-        <span class="bp-note n2">390 px</span>
-        <span class="bp-note n3">main action</span>
-        <div class="phone-wrap">
-          <div class="brackets"><i></i><i></i><i></i><i></i></div>
-          <div class="phone">
-            <div class="layer wire">
-              <div style="display:flex;justify-content:space-between"><div class="wl" style="width:44%"></div><div class="wl" style="width:14px;height:14px;border-radius:50%"></div></div>
-              <div class="wbox"></div>
-              <div class="wl" style="width:70%"></div>
-              <div class="wl" style="width:46%"></div>
-              <div class="wrow"></div><div class="wrow"></div><div class="wrow"></div>
-              <div class="wl" style="height:30px;border-radius:999px;margin-top:6px"></div>
-            </div>
-            <div class="layer app">
-              <div class="hi">Hi, Meera <i></i></div>
-              <div class="next"><small>NEXT BOOKING</small><b>Pottery, 4 PM</b><span>Studio 2 · 6 seats left</span><br><em>Book seat</em></div>
-              <div class="wk">This week</div>
-              <div class="item"><i></i><div>Music<small>Mon · 5 PM</small></div></div>
-              <div class="item"><i style="background:#FFD6C4"></i><div>Coding club<small>Wed · 6 PM</small></div></div>
-              <div class="item"><i style="background:#D5DAE1"></i><div>Art<small>Sat · 11 AM</small></div></div>
-              <div class="cta">See schedule</div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
